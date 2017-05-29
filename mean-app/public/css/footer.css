@@ -1,0 +1,28 @@
+       /* footer*/
+
+        #footer {
+            padding-top: 30px;
+            padding-bottom: 30px;
+            color: #fff;
+            background: #2e2e2e;
+            border-top: 4px solid #f78e21;
+        }
+
+        #footer a {
+            color: #fff;
+        }
+
+        #footer ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #footer ul>li {
+            display: inline-block;
+            margin-left: 15px;
+        }
+
+        #footer a:hover {
+            color: #f78e21;
+        }

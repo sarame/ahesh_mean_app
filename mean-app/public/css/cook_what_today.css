@@ -1,0 +1,33 @@
+
+.search-box input[type="add"] {
+  background-color: transparent;
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  right: 0;
+  top: 0;
+  border: 0;
+  content: '';
+  color: transparent;
+  background: url(../images/add-icon.png);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.Container {
+  margin-top: 80px;
+}
+
+.Container .mix {
+  display: none;
+}
+
+#addTag
+{
+    visibility:hidden;
+}
+
+#addIng
+{
+    visibility:hidden;
+}
