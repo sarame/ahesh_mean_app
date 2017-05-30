@@ -24,10 +24,17 @@ function Update(req,res){
     recipe.findByIdAndUpdate(req.params.id,req.body).then(_result=>res.json("data is updated: "+_result))
     .catch(_err=>res.status(500).send())
 }
+
+function GetAllMostRated(req,res){
+    recipe.find(e=> e.avgRate > 6).then(_result=>res.json(_result))
+    .catch(_err=>res.status(500).send());
+}
+
 module.exports={
     Add:Add,
     GetAll:GetAll,
     GetById:GetById,
     Delete:Delete,
-    Update:Update
+    Update:Update,
+    GetAllMostRated:GetAllMostRated
 }
