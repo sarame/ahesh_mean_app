@@ -21,6 +21,7 @@ import { MostRatedComponent } from './components/most-rated/most-rated.component
 import { LearningComponent } from './components/learning/learning.component';
 import { TagsComponent } from './components/tags/tags.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { GoogleSignInComponent } from './components/google-sign-in/google-sign-in.component';
 
 
 
@@ -55,7 +56,8 @@ const ROUTES = [
     MostRatedComponent,
     LearningComponent,
     TagsComponent,
-    SignupComponent
+    SignupComponent,
+    GoogleSignInComponent
   ],
   imports: [
     BrowserModule,
