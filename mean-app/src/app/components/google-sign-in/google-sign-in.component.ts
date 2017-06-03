@@ -1,20 +1,30 @@
-import { Component, OnInit ,  ElementRef , AfterViewInit } from '@angular/core';
+import { Component, OnInit ,  ElementRef , AfterViewInit, } from '@angular/core';
+import { User } from './../../../poco/user' ;
+import { UserService } from '../../services/user.services'
 declare const gapi: any;
 
 @Component({
   selector: 'google-signin',
-  template: `<button type="button" class="btn btn-google btn-lg"><i class="fa fa-google-plus" aria-hidden="true"></i> Sign Up with Google</button>`
-  
+  template: `<button type="button" class="btn btn-google btn-lg"><i class="fa fa-google-plus" 
+  aria-hidden="true"></i> Sign Up with Google</button>`,
+  providers: [UserService]
 })
 export class GoogleSignInComponent implements  AfterViewInit{
 
-    private clientId:string = '713677849239-vnm9vk6ru1tt9n52h4re6a668l6kd2h2.apps.googleusercontent.com';
-  
+  constructor(private element: ElementRef ,
+  private userservice: UserService) {
+    console.log('ElementRef: ', this.element);
+
+  }
+
+
+   private clientId:string = '713677849239-3tapd9bdmcm377rkgj6lk513ash9ja96.apps.googleusercontent.com';
+   private clientsecret: 'ngQGV5t-A7pweLXV7ek6yLqM';
   private scope = [
     'profile',
     'email',
     'https://www.googleapis.com/auth/plus.me',
-    'https://www.googleapis.com/auth/contacts.readonly',
+    // 'https://www.googleapis.com/auth/contacts.readonly',
     'https://www.googleapis.com/auth/admin.directory.user.readonly'
   ].join(' ');
 
@@ -30,11 +40,13 @@ export class GoogleSignInComponent implements  AfterViewInit{
       that.attachSignin(that.element.nativeElement.firstChild);
     });
   }
+  user: User;
   public attachSignin(element) {
     let that = this;
+    
     this.auth2.attachClickHandler(element, {},
       function (googleUser) {
-
+        let userx : any = {};
         let profile = googleUser.getBasicProfile();
         console.log('Token || ' + googleUser.getAuthResponse().id_token);
         console.log('ID: ' + profile.getId());
@@ -42,20 +54,46 @@ export class GoogleSignInComponent implements  AfterViewInit{
         console.log('Image URL: ' + profile.getImageUrl());
         console.log('Email: ' + profile.getEmail());
         //YOUR CODE HERE
+       
+       userx = {
+         name: profile.getName(),
+         img: profile.getImageUrl(),
+         email: profile.getEmail(),
+         bio:  profile.getId(),
+         authonticationId: googleUser.getAuthResponse().id_token  
+       }
+       console.log(userx.name) ;
+       that.assignData(userx) ;
 
-
+        
+        
       }, function (error) {
         console.log(JSON.stringify(error, undefined, 2));
       });
+      //sconsole.log("hhhhhh " +that.user.name) ;
   }
 
-  constructor(private element: ElementRef) {
-    console.log('ElementRef: ', this.element);
+  assignData(u:any){
+    console.log("try function " + u.name) ;
+     this.userservice.signup(u) ;
+    
   }
-
-  ngAfterViewInit() {
+  //  ngOnInit(){
+  //   this.googleInit(); 
+  //  }
+    ngAfterViewInit() {
     this.googleInit();
+    console.log("this is usssssr   " + this.user) ;
+  
+        
+    
   }
 
+   signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
 
 }

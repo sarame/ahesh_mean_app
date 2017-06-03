@@ -68,13 +68,51 @@ function Update(req, res) {
     user.findByIdAndUpdate(req.params.id, req.body).then(_result => res.json("data is updated: " + _result))
         .catch(_err => res.status(500).send())
 }
+//check the user is exist of not 
+function GetByEmail(req, res) {
+ //   console.log("da el body: " +req.params.email )
+    var email = req.params['email'];
+    console.log(email);
+    user.findOne( {
+     $or: [
+            { 'email' : email }
+          ]
+   })
+    .populate({
+            path: 'recipes',
+            select: 'name -_id'
+        })
+        .populate({
+            path: 'fevRecipes',
+            select: 'name -_id'
+        })
+        .populate({
+            path: 'shoppingList',
+            select: 'name -_id'
+        })
+        .populate({
+            path: 'enrolledCourse.course',
+            select: '-_id',
+        })
+        .populate({
+            path: 'enrolledCourse.visitedSections',
+            select: '-_id',
+        })
+        .populate('badges.badgeid')
+        .then(_result => res.json("data is : " + _result))
+        .catch(_err => res.status(500).send())
+}
 module.exports = {
     Add: Add,
     GetAll: GetAll,
     GetById: GetById,
     Delete: Delete,
-    Update: Update
+    Update: Update,
+    GetByEmail : GetByEmail
 }
+
+
+
 
 
 // {

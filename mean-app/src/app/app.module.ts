@@ -1,15 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
+import { LocalStorageModule } from 'angular-2-local-storage' ;
 import { AppComponent } from './app.component';
 import { PostsComponent } from './components/posts/posts.component';
 
 // Imports commented out for brevity
 import { RouterModule } from '@angular/router';
 
+// import services  
 
+import { UserService } from './services/user.services';
 // Imports commented out for brevity
 
 import { PostsService } from './services/posts.service';
@@ -22,7 +25,7 @@ import { LearningComponent } from './components/learning/learning.component';
 import { TagsComponent } from './components/tags/tags.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { GoogleSignInComponent } from './components/google-sign-in/google-sign-in.component';
-
+import { FacebookSigninComponent } from './components/facebook-sign-in/facebook-signin.component' ;
 
 
 // Define the routes
@@ -57,15 +60,20 @@ const ROUTES = [
     LearningComponent,
     TagsComponent,
     SignupComponent,
-    GoogleSignInComponent
+    GoogleSignInComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES) // Add routes to the app
+    RouterModule.forRoot(ROUTES),
+    LocalStorageModule.withConfig({
+            prefix: 'my-app',
+            storageType: 'localStorage'
+        }),
+  ReactiveFormsModule
   ],
-  providers: [PostsService],
+  providers: [PostsService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

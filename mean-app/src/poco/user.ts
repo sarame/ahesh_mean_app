@@ -3,5 +3,7 @@ export class User {
     email: string; 
     password: string;
     img: string ;
-    bio: string ;     
+    bio: string ; 
+    authtid: string ;  
+    id: string ;  
 }
