@@ -1,12 +1,12 @@
 var mongoose = require('mongoose');
 var tagModel = require('./collections/tag');
-var recipeModel = require ('./collections/recipe');
-var reviewModel = require ('./collections/review');
-var userModel = require ('./collections/user');
-var badgeModel = require ('./collections/badge');
-var courseModel = require ('./collections/course');
-var ingradientModel = require ('./collections/ingradient');
-var sectionModel = require ('./collections/section');
+var recipeModel = require('./collections/recipe');
+var reviewModel = require('./collections/review');
+var userModel = require('./collections/user');
+var badgeModel = require('./collections/badge');
+var courseModel = require('./collections/course');
+var ingradientModel = require('./collections/ingradient');
+var sectionModel = require('./collections/section');
 var projectRoutes = require('./routes');
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -16,6 +16,33 @@ const http = require('http');
 
 
 mongoose.connect("mongodb://localhost:27017/Aesh_Mal7");
+
+
+
+// // /* insert tags */
+// var tag = new tagModel({
+//   name: "cold",
+// });
+// tag.save().then(result => console.log(JSON.stringify(result, undefined, 2))).catch(err => console.log(err));
+// var tag1 = new tagModel({
+//   name: "Hot",
+// });
+// tag1.save().then(result => console.log(JSON.stringify(result, undefined, 2))).catch(err => console.log(err));
+// var tag2 = new tagModel({
+//   name: "Diet",
+// });
+// tag2.save().then(result => console.log(JSON.stringify(result, undefined, 2))).catch(err => console.log(err));
+
+// var tag3 = new tagModel({
+//   name: "Pizza",
+// });
+// tag3.save().then(result => console.log(JSON.stringify(result, undefined, 2))).catch(err => console.log(err));
+
+// var tag4 = new tagModel({
+//   name: "Vagitarian",
+// });
+// tag4.save().then(result => console.log(JSON.stringify(result, undefined, 2))).catch(err => console.log(err));
+
 
 // Get dependencies
 

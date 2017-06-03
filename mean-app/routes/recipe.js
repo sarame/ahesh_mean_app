@@ -1,6 +1,9 @@
 var router = require('express').Router();
 var recipeCtrl = require('../controllers/recipeCtrl');
 router.get("/",recipeCtrl.GetAll);
+router.get("/most/",recipeCtrl.GetAllMostRated);
+router.get("/learn/",recipeCtrl.GetAllMost);
+
 router.get("/:id",recipeCtrl.GetById);
 router.post("/", recipeCtrl.Add);
 router.delete("/:id",recipeCtrl.Delete);

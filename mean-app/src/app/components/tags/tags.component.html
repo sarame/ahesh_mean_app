@@ -1,0 +1,79 @@
+<div class="parrent pull-left">
+  <ul class="nav nav-tabs nav-stacked">
+    <li class=""> <a href="#tab1" data-toggle="tab" class="analistic-01">{{items[0].name}}</a></li>
+    <li class="active"><a href="#tab2" data-toggle="tab" class="analistic-02 ">{{items[1].name}}</a></li>
+    <li class=""> <a href="#tab3" data-toggle="tab" class="tehnical">{{items[2].name}}</a></li>
+    <li class=""><a href="#tab4" data-toggle="tab" class="tehnical">{{items[3].name}}</a></li>
+    <li class=""><a href="#tab5" data-toggle="tab" class="tehnical">{{items[4].name}}</a></li>
+  </ul>
+</div>
+
+<div class="parrent media-body">
+  <div class="tab-content">
+    <div class="tab-pane fade" id="tab1">
+      <div class="media">
+        <div class="pull-left">
+          <img class="img-responsive" width="300px" src="./images/gallery/{{items[0].recipes[0].img}}">
+        </div>
+        <div class="media-body ">
+          <h2>{{items[0].recipes[0].name}}</h2>
+          <p>{{items[0].recipes[0].description}}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane fade active in" id="tab2">
+      <div class="media">
+        <div class="pull-left">
+          <img class="img-responsive" width="300px" src="./images/gallery/{{items[1].recipes[0].img}}">
+        </div>
+        <div class="media-body ">
+          <h2>{{items[1].recipes[0].name}}</h2>
+          <p>{{items[1].recipes[0].description}}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="tab3">
+      <div class="media">
+        <div class="pull-left">
+          <img class="img-responsive" width="300px" src="./images/gallery/{{items[2].recipes[0].img}}">
+        </div>
+        <div class="media-body ">
+          <h2>{{items[2].recipes[0].name}}</h2>
+          <p>{{items[2].recipes[0].description}}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="tab4">
+      <div class="media">
+        <div class="pull-left">
+          <img class="img-responsive" width="300px" src="./images/gallery/{{items[3].recipes[0].img}}">
+        </div>
+        <div class="media-body ">
+          <h2>{{items[3].recipes[0].name}}</h2>
+          <p>{{items[2].recipes[0].description}}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="tab5">
+      <div class="media">
+        <div class="pull-left">
+          <img class="img-responsive" width="300px" src="./images/gallery/{{items[4].recipes[0].img}}" >
+        </div>
+        <div class="media-body ">
+          <h2>{{items[4].recipes[0].name}}</h2>
+          <p>{{items[4].recipes[0].description}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/.tab-content-->
+</div>

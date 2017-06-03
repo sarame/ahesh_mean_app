@@ -1,6 +1,7 @@
 var router = require('express').Router();
 var tagCtrl = require('../controllers/tagCtrl');
 router.get("/",tagCtrl.GetAll);
+router.get("/randam/",tagCtrl.GetAllRandam);
 router.get("/:id",tagCtrl.GetById);
 router.post("/", tagCtrl.AddTag);
 router.delete("/:id",tagCtrl.Delete);

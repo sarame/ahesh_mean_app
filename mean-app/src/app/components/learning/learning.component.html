@@ -1,0 +1,19 @@
+<ul class="slides">
+  <li *ngFor="let item of items">
+    <div class="row">
+
+      <div class="col-sm-6 col-md-4" *ngFor="let item of ite">
+        <div class="media services-wrap wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">
+          <div class="pull-left">
+            <img class="img-responsive" src="images/services/services1.png">
+          </div>
+          <div class="media-body" style="height:150px">
+            <h3 class="media-heading">{{item.name}}</h3>
+            <p>{{item.description}}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </li>
+</ul>
