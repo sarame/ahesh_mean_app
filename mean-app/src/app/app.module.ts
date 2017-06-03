@@ -19,6 +19,7 @@ import { PostsService } from './services/posts.service';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SliderComponent } from './components/slider/slider.component';
+import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { MostRatedComponent } from './components/most-rated/most-rated.component';
 import { LearningComponent } from './components/learning/learning.component';
@@ -61,6 +62,7 @@ const ROUTES = [
     TagsComponent,
     SignupComponent,
     GoogleSignInComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

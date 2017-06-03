@@ -50,7 +50,7 @@ export class UserService {
     });
   }
 
-  loin(user:any): any{
+  login(user:any): any{
         return this.http.get(`/api/user/g/`+ user.email)
       .map(res => res.json())
       .subscribe(user => {
