@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HomeService } from '../../services/homeServices/home.service';
 
 @Component({
   selector: 'app-tags',
@@ -7,9 +8,78 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TagsComponent implements OnInit {
 
-  constructor() { }
+  // instantiate posts to an empty array
+  items: any = [{
+    name: "",
+    recipes: [
+      {
+        name: "",
+        img: "",
+        description: "",
+      }
+    ]
+  }, {
+    name: "",
+    recipes: [
+      {
+        name: "",
+        img: "",
+        description: "",
+      }
+    ]
+  }, {
+    name: "",
+    recipes: [
+      {
+        name: "",
+        img: "",
+        description: "",
+      }
+    ]
+  }, {
+    name: "",
+    recipes: [
+      {
+        name: "",
+        img: "",
+        description: "",
+      }
+    ]
+  }, {
+    name: "",
+    recipes: [
+      {
+        name: "",
+        img: "",
+        description: "",
+      }
+    ]
+  }, {
+    name: "",
+    recipes: [
+      {
+        name: "",
+        img: "",
+        description: "",
+      }
+    ]
+  }, {
+    name: "",
+    recipes: [
+      {
+        name: "",
+        img: "",
+        description: "",
+      }
+    ]
+  }];
+
+  constructor(private homeService: HomeService) { }
 
   ngOnInit() {
+    this.homeService.getAllTags().subscribe(items => {
+      this.items = items;
+    });
   }
 
 }

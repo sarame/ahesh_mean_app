@@ -5,11 +5,21 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class HomeService {
 
-    constructor(private http: Http) { }
 
+  constructor(private http: Http) { }
   // Get all posts from the API
-  getAllPosts() {
-    return this.http.get('api/recipe')
+  getAllRecipes() {
+    return this.http.get('api/recipe/most/')
+      .map(res => res.json());
+  }
+
+  getAllCourses() {
+    return this.http.get('api/course/Three/')
+      .map(res => res.json());
+  }
+  
+  getAllTags() {
+    return this.http.get('api/tags/randam/')
       .map(res => res.json());
   }
 

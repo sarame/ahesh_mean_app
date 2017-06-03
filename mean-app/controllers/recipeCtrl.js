@@ -1,7 +1,8 @@
+
 var recipe= require("../collections/recipe");
 
 function GetAll(req,res){
-    recipe.find({}).then(_result=>res.json("data is : "+_result))
+    recipe.find({}).then(_result=>res.json(_result))
     .catch(_err=>res.status(500).send())
 }
 function Add(req,res){
@@ -10,7 +11,7 @@ function Add(req,res){
         .catch(_err => res.status(500).send())
 }
 function GetById(req,res){
-    recipe.findById(req.params.id).then(_result=>res.json("data is : "+_result))
+    recipe.findById(req.params.id).then(_result=>res.json(_result))
     .catch(_err=>res.status(500).send())
 }
 
@@ -26,9 +27,15 @@ function Update(req,res){
 }
 
 function GetAllMostRated(req,res){
-    recipe.find(e=> e.avgRate > 6).then(_result=>res.json(_result))
+    recipe.find({}).limit(6).sort({ avgRate: -1 }).then(_result=>res.json(_result))
     .catch(_err=>res.status(500).send());
 }
+
+function GetAllMost(req,res){
+    recipe.find({}).limit(3).sort({ avgRate: 1 }).then(_result=>res.json(_result))
+    .catch(_err=>res.status(500).send());
+}
+
 
 module.exports={
     Add:Add,
@@ -36,5 +43,6 @@ module.exports={
     GetById:GetById,
     Delete:Delete,
     Update:Update,
-    GetAllMostRated:GetAllMostRated
+    GetAllMostRated:GetAllMostRated,
+    GetAllMost:GetAllMost
 }

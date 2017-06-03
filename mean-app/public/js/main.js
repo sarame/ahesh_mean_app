@@ -1,6 +1,5 @@
-$(document).ready(function() {
 
-	
+$(document).ready(function() {
 
   $("div.blog-post").hover(
     function() {

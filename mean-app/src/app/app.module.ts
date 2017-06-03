@@ -16,10 +16,11 @@ import { UserService } from './services/user.services';
 // Imports commented out for brevity
 
 import { PostsService } from './services/posts.service';
+import { LoginComponent } from './components/login/login.component';
+import { HomeService } from './services/homeServices/home.service';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SliderComponent } from './components/slider/slider.component';
-import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { MostRatedComponent } from './components/most-rated/most-rated.component';
 import { LearningComponent } from './components/learning/learning.component';
@@ -75,7 +76,7 @@ const ROUTES = [
         }),
   ReactiveFormsModule
   ],
-  providers: [PostsService, UserService],
+  providers: [PostsService, UserService, HomeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

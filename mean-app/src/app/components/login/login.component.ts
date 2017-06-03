@@ -4,7 +4,7 @@ import { UserService } from '../../services/user.services';
 @Component({
   moduleId: module.id,
   selector: 'login',
-  templateUrl: 'posts.component.html',
+  templateUrl: 'login.component.html',
   
 })
 export class LoginComponent implements OnInit {
@@ -13,7 +13,6 @@ export class LoginComponent implements OnInit {
   user: any ;
 
   constructor(private userService: UserService) { }
-
 
   ngOnInit() {
     // Retrieve posts from the API
