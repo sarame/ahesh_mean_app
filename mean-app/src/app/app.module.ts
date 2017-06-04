@@ -15,7 +15,9 @@ import { RouterModule } from '@angular/router';
 import { UserService } from './services/user.services';
 // Imports commented out for brevity
 
+//services
 import { PostsService } from './services/posts.service';
+import { CoursesService } from './services/courseServices/courses.service';
 
 import { StarDirective } from './directives/starDirective/star.directive';
 import { ProfileService } from './services/profileServices/profile.service';
@@ -33,6 +35,10 @@ import { SignupComponent } from './components/signup/signup.component';
 import { GoogleSignInComponent } from './components/google-sign-in/google-sign-in.component';
 import { FacebookSigninComponent } from './components/facebook-sign-in/facebook-signin.component';
 import { ProfileComponent } from './components/profile/profile.component';
+
+import { CoursesComponent } from './components/courses/courses.component';
+import { CourseComponent } from './components/course/course.component';
+import { CourseDetailsComponent } from './components/courseDetails/courseDetails.component';
 
 
 
@@ -58,6 +64,18 @@ const ROUTES = [
   {
     path: 'profile/:tabValue',
     component: ProfileComponent
+  },
+  {
+    path: 'courses',
+    component: CoursesComponent,
+  },
+  {
+    path: 'courses/:id',
+    component: CourseComponent
+  },
+  {
+    path: 'courses/course/:id',
+    component: CourseDetailsComponent
   }
 ];
 @NgModule({
@@ -75,7 +93,10 @@ const ROUTES = [
     GoogleSignInComponent,
     LoginComponent, 
     ProfileComponent,
-    StarDirective
+    StarDirective,
+    CoursesComponent,
+    CourseComponent,
+    CourseDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -88,7 +109,7 @@ const ROUTES = [
     }),
     ReactiveFormsModule
   ],
-  providers: [PostsService, UserService,ProfileService, HomeService],
+  providers: [PostsService, UserService,ProfileService, HomeService,CoursesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

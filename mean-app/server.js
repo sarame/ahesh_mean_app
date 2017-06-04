@@ -21,8 +21,9 @@ mongoose.connect("mongodb://localhost:27017/Aesh_Mal7");
 
 
 // // /* insert tags */
-// var tag = new tagModel({
-//   name: "cold",
+// var tag = new sectionModel({
+//   title: "first",
+//   text:"ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho "
 // });
 // tag.save().then(result => console.log(JSON.stringify(result, undefined, 2))).catch(err => console.log(err));
 // var tag1 = new tagModel({

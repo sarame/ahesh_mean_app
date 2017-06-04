@@ -24,9 +24,11 @@ var badgeRoutes = require('./badge');
 var ingredientRoutes = require("./ingredient");
 var courseRoutes = require('./course');
 
+
 router.use("/api/tags", tagRoutes);
 router.use("/api/unitTypes", unitTypeRoutes);
 router.use("/api/recipe", recipeRoutes);
+router.use("/api/courses",courseRoutes);
 router.use("/api/review", reviewRoutes);
 router.use("/api/user", userRoutes);
 router.use("api/badge", badgeRoutes);
