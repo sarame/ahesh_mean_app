@@ -1,0 +1,32 @@
+ <!--course-->
+<div id="courses-container">
+        <div class="container">
+            <div class="row row-centered">
+                <!--course Block-->
+                <div class="col-md-3 col-centered" *ngFor="let course of courses">
+                    <a class="course-link"  [routerLink]="[course._id]">
+                        <div class="thumbnail">
+
+                            <div class="course-icon">
+                              <img src="images/courseIcons/{{course.img}}" style="width:100px;height:100px"/>
+                             
+                                <!--<i class="fa fa-cutlery" aria-hidden="true"></i>-->
+                            </div>
+
+
+
+                            <div class="caption-full">
+                                <h3>{{course.name}}</h3>
+                                <p>{{course.description}}</p>
+                                <h4 class="chapter">{{course.sections.length }} Section </h4>
+                                <!--<button type="button" class="btn btn-success">View course</button>-->
+                            </div>
+
+
+                        </div>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>

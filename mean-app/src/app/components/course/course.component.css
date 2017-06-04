@@ -1,0 +1,108 @@
+
+#courses-container{
+    margin-top: 15px;
+}
+#course-container{
+    margin-bottom: 50px;
+}
+.chapter{
+    color: #4cae4c;
+  
+}
+.course-icon{
+    
+    height: 12.5rem;
+    background-color: #4cae4c;
+    color: white;
+    
+    font-size: 70px;
+    padding: 10px;
+    text-align: center;
+  
+
+}
+.course-icon i{
+      
+      padding-top: 20px;
+}
+.course-link:hover .course-icon{
+    background-color: #398439;
+}
+.caption-full{
+      padding: 1.25rem 1.5rem;
+}
+
+
+.course-sections, .course, .overview-chapters,.course-overview{
+
+        margin:  20px;
+        margin-left: 50px;
+}
+.course-icon2{ 
+     background-color: #4cae4c;
+     color: white;
+     font-size: 70px;
+     text-align: center;
+    margin-right: 0px;
+}
+
+.course-icon2 i{
+    padding-top: 37px;
+}
+.course-description{
+background-color: #fffcc4;
+}
+.course-description,.course-icon2{
+    height:100%;
+}
+.course-sections{
+    display: none;
+    
+}
+.overview-chapters > .my-nav-tabs> li > button {
+  
+    color: #f78e21;
+   border-bottom:1px solid #ddd;
+   background-color: white;
+   outline:0;
+}
+.my-nav-tabs>li.active>button:focus {outline:0;}
+.my-nav-tabs>li.active>button, .my-nav-tabs>li.active>button:hover {
+    color: #555;
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;}
+
+.my-nav-tabs > li > button {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+}
+.my-nav-tabs>li>button {
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+}
+
+.course-sections>.list-group li{
+    color: #787878;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+   border:none;
+}
+.outcome > h3,.why >h3{
+color: #787878;
+}
+.my-modal-content{
+
+    background-color: #fffcc4;
+    
+}
+.my-modal-body,.my-modal-footer{
+    border:none;
+    padding: 5px;
+    margin: 10px;
+}

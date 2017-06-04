@@ -33,13 +33,13 @@ function Add(req, res) {
 }
 function GetById(req, res) {
     user.findById(req.params.id)
-    .populate({
+        .populate({
             path: 'recipes',
             select: 'name -_id'
         })
         .populate({
             path: 'fevRecipes',
-            select: 'name -_id'
+            select: ' -_id'
         })
         .populate({
             path: 'shoppingList',
@@ -54,7 +54,7 @@ function GetById(req, res) {
             select: '-_id',
         })
         .populate('badges.badgeid')
-        .then(_result => res.json("data is : " + _result))
+        .then(_result => res.json(_result))
         .catch(_err => res.status(500).send())
 }
 
@@ -70,15 +70,15 @@ function Update(req, res) {
 }
 //check the user is exist of not 
 function GetByEmail(req, res) {
- //   console.log("da el body: " +req.params.email )
+    //   console.log("da el body: " +req.params.email )
     var email = req.params['email'];
     console.log(email);
-    user.findOne( {
-     $or: [
-            { 'email' : email }
-          ]
-   })
-    .populate({
+    user.findOne({
+        $or: [
+            { 'email': email }
+        ]
+    })
+        .populate({
             path: 'recipes',
             select: 'name -_id'
         })
@@ -108,7 +108,7 @@ module.exports = {
     GetById: GetById,
     Delete: Delete,
     Update: Update,
-    GetByEmail : GetByEmail
+    GetByEmail: GetByEmail
 }
 
 
@@ -135,5 +135,5 @@ module.exports = {
 // 	"shoppingList": ["591766378935f41688d6b6b9"],
 // 	"fevRecipes": ["591768c10d323923983df6ca"],
 // 	"recipes": ["591768c10d323923983df6ca"]
-	
+
 // }
