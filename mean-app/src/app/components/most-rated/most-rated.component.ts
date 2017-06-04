@@ -67,7 +67,7 @@ export class MostRatedComponent implements OnInit {
     // Retrieve posts from the API
     this.homeService.getAllRecipes().subscribe(items => {
       this.items = items;
-      console.log(items);
+     // console.log(items);
     });
   }
 

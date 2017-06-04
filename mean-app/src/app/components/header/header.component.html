@@ -44,10 +44,13 @@
                 <div class="col-md-3">
 
                     <div class="search-box">
-                        <form name="search_form" method="get" class="search_form">
-                            <input id="search" class="form-control" type="text" />
-                            <input type="submit" id="search-button" />
-                        </form>
+                        <input id="search" (keyup)="performSearch(searchTerm)" (keyup)="performSearch(searchTerm)" placeholder="search" #searchTerm
+                            class="form-control" type="text" />
+                        <input type="submit" (click)="performSearch(searchTerm)" id="search-button" class="dropdown-toggle" data-toggle="dropdown"
+                            role="button" aria-haspopup="true" aria-expanded="false" />
+                        <ul class="dropdown-menu" id="{{search}}" *ngIf="items" style="margin: 0px 0 0;">
+                            <li *ngFor="let g of items"><a href="">{{g.name}}</a></li>
+                        </ul>
                     </div>
                 </div>
                 <div class="col-md-1">

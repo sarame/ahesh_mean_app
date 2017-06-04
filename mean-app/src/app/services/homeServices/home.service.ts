@@ -13,6 +13,11 @@ export class HomeService {
       .map(res => res.json());
   }
 
+   getSearchRecipes() {
+    return this.http.get('api/recipe/')
+      .map(res => res.json());
+  }
+
   getAllCourses() {
     return this.http.get('api/course/Three/')
       .map(res => res.json());
