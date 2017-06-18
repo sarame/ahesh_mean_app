@@ -1,6 +1,8 @@
 import { Component, OnInit, DoCheck, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProfileService } from './../../services/profileServices/profile.service';
+import { LocalStorageService } from 'angular-2-local-storage';
+import { Router } from '@angular/router' ;
 
 
 //import { ImageResult, ResizeOptions } from 'angular2-image-upload';
@@ -11,7 +13,7 @@ import { ProfileService } from './../../services/profileServices/profile.service
   styleUrls: ['./private-profile.component.css']
 })
 export class PrivateProfileComponent implements OnInit, DoCheck {
-
+  private userObject: any = {};
   private userId: string = "59175dff871f492068d93127";
   displayType: string = "none";
   profileData: any;
@@ -30,10 +32,13 @@ export class PrivateProfileComponent implements OnInit, DoCheck {
     color:string;
     valuePrecentage:string
 
-  constructor(private route: ActivatedRoute, private service: ProfileService) { }
+  constructor(private route: ActivatedRoute, private service: ProfileService,
+  private localStorage: LocalStorageService ,
+  private router: Router) { }
   onSendFav(event) {
     this.fevRecipes = event;
   }
+  
 
   onSendUser(event) {
     this.recipes = event;
@@ -41,6 +46,14 @@ export class PrivateProfileComponent implements OnInit, DoCheck {
   }
 
   ngOnInit() {
+    if (this.localStorage.get("currentUser")===null){
+              this.router.navigate(['/login']) ;
+    } else {
+      this.userObject = this.localStorage.get("currentUser") ;
+      this.userId = this.userObject._id ;
+      console.log("this user object => " , this.userObject) ;
+      console.log("this user ID => " , this.userId) ;
+    }
     this.service.GetbyId(this.userId).subscribe(x => {
       this.profileData = x;
       this.listLength = this.profileData.shoppingList.length;

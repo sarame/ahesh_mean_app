@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../../services/homeServices/home.service';
 import { ProfileService } from '../../services/profileServices/profile.service';
+import { LocalStorageService } from 'angular-2-local-storage';
+import { Router } from '@angular/router' 
 
 
 
@@ -11,7 +13,7 @@ import { ProfileService } from '../../services/profileServices/profile.service';
 })
 export class HeaderComponent implements OnInit {
 
-
+  userObject: any ={} ;
   userId: any = "59175dff871f492068d93127";
   oldImg: any;
   flag: boolean = true;
@@ -20,7 +22,9 @@ export class HeaderComponent implements OnInit {
   list: any = [];
   dat: any = [];
   search: any = "";
-  constructor(private homeService: HomeService, private profileService: ProfileService) { }
+  constructor(private homeService: HomeService, private profileService: ProfileService
+  ,private localStorage: LocalStorageService ,
+  private router: Router) { }
 
   ngOnInit() {
     // Retrieve posts from the API
@@ -30,6 +34,8 @@ export class HeaderComponent implements OnInit {
       console.log(items);
     });
 
+console.log("current User in local st => " ,
+     this.localStorage.get("currentUser")) ;   
 
     this.profileService.GetbyId(this.userId).subscribe(e => {
       this.list=e.shoppingList;
@@ -46,5 +52,9 @@ export class HeaderComponent implements OnInit {
       this.items = this.dat.filter(s => s.name.indexOf(searchTerm.value.toLowerCase()) > -1 || s.description.indexOf(searchTerm.value.toLowerCase()) > -1);
       this.search = "show";
     }
+  }
+
+  logout(){
+
   }
 }
