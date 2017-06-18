@@ -1,82 +1,19 @@
 <!--Course container-->
-<div id="course-container">
-    <div class="container">
-        <div class="row row-centered">
-            <div class="course">
-                <!--course icon-->
-
-                <!--course description-->
-                <div class="col-md-8 course-description caption-full ">
-                    <div class="col-md-2 course-icon2 ">
-                        <img src="images/courseIcons/{{course.img}}" />
-                    </div>
-                    <div class="col-md-8 course-description">
-
-                        <h3>{{course.name}}</h3>
-                        <p>{{course.description}} </p>
-                        <button onclick="showModel()" type="button" class="btn btn-success">enroll</button>
-                    </div>
-                    <!--modal to inform user he enrolled successfull and continue to see sections-->
-                    <div id="myModal" class="modal fade">
-                        <div class="modal-dialog">
-                            <div class="modal-content my-modal-content">
-                                <div class="modal-body my-modal-body">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h3>
-                                        Congratulation You enrolled successfully
-                                        <span style="color:green"> <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> </span>
-                                    </h3>
-                                </div>
-                                <div class="modal-footer my-modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                    <a (click)="changeRout()" type="button" class="btn btn-success" data-dismiss="modal">Continue</a>
-
-                                </div>
-                            </div>
-
-
-                        </div>
-
-                    </div>
-
-                </div>
-                <!--navigation tabs (course overView & sections-->
-                <div class="row row-centered">
-                    <div class="col-md-12">
-                        <div class="overview-chapters">
-                            <ul class="nav nav-tabs my-nav-tabs">
-                                <li role="presentation" class="active" id="overview"><button onclick="show(1)" class="tap">Overview</button></li>
-                                <li role="presentation" id="chapter"><button onclick="show(2)" class="tap">Sections</button></li>
-
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!--tabs div content-->
-                <div class="row row-centered">
-                    <div class="col-md-12">
-                        <div class="course-overview">
-                            <div class="outcome">
-                                <h3>Course outcome</h3>
-                                <p>{{course.courseOutcome}}</p>
-                            </div>
-                            <div class="why">
-                                <h3>why enroll this course</h3>
-                                <p>skjl'jsjfklsmkmksmijsipppppppppppppppp</p>
-                            </div>
-                        </div>
-                        <div class="course-sections">
-                            <ul class="list-group" *ngFor="let section of sections">
-                                <li class="list-group-item">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i> {{section.title}}
-                                </li>
-
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+<div class="thumbnail ourCourse" *ngIf="course">
+    <div class="row">
+        <div class="col-xs-6">
+            <img class="img-responsive img-rounded thumbnail courseImage " src="images/{{course.img}}" alt="">
+        </div>
+        <div class="col-xs-6">
+            <h1 class="courseName">{{course.name}}</h1>
+            <h3>{{course.description}}</h3>
+            <hr/>
+            <h4 class="sections">Sections</h4>
+            <ul class="sectionList">
+                <li *ngFor="let section of course.sections">{{section.title}}</li>
+            </ul>
+            <hr/>
+            <p class="viewMore"><a class="btn btn-primary btn-lg" (click)="changeRout()">view details</a></p>
         </div>
     </div>
 </div>

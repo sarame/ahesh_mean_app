@@ -1,0 +1,64 @@
+
+.caption p{
+  overflow: hidden;
+  text-overflow: ellipsis;
+      white-space: nowrap;
+
+}
+.edit{
+    position: absolute;
+    top: 13px;
+}
+.delete{
+    position: absolute;
+    top: 43px;
+}
+
+.favorit{
+  
+    color: rgb(255,0,0);
+    text-align: center;
+    padding: 5px;
+}
+.rate{
+  margin-top: 1px;
+}
+.userPic{
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+    position: absolute;
+    top: 170px;
+    left: 213px;
+    z-index: 1;
+}
+.userName{
+    position: absolute;
+    left: 164px;
+    color: white;
+    border-radius: 5px;
+    top: 184px;
+    padding: 3px 10px 3px 1px;
+    width: 66px;
+    text-align: center;
+    background-color: #f78e21;
+    font-weight: bold;
+}
+
+.vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 100%;
+}
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+}
+.modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width:inherit;
+    height:inherit;
+    /* To center horizontally */
+    margin: 0 auto;
+}

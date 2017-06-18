@@ -1,0 +1,32 @@
+<div class="row">
+  <input type="text" placeholder="Search..." class="form-control" [(ngModel)]="keyword" (blur)="findRecipe()" />
+
+</div>
+<div class="row">
+
+  <div *ngIf="tags">
+
+    <div class="news-letters">
+      <h4>Tags</h4>
+      <div class="archives-list">
+
+        <label *ngFor="let tag of tags"> <input type="checkbox" [ngModel]="checkFilters(tag._id)" (change)="chooseTag($event)" value="{{tag._id}}"/>{{tag.name}}</label>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <h4>Calories</h4>
+  <div class="range range-warning">
+    <input type="range" name="calorieRange" min="1" max="1000" value="1000" [(ngModel)]="calorieFilter" onchange="rangeWarning.value=value"
+      (change)="chooseCalories()">
+    <output id="rangeWarning">1000</output>
+  </div>
+</div>
+<div class="row">
+  <h4>Ranking</h4>
+  <div class="range range-warning">
+    <input type="range" name="range" min="0" max="5" value="0" [(ngModel)]="rankFilter" onchange="rangeCalorie.value=value" (change)="chooseRanking()">
+    <output id="rangeCalorie">0</output>
+  </div>
+</div>

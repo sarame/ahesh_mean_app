@@ -1,0 +1,104 @@
+.tabContent{
+        padding: 37px;
+    background-color:#eee;
+}
+.name{
+    font-size: 19px;
+}
+.remove{
+    float: right;
+}
+.edit{
+        float: right;
+    margin-right: 5px;
+}
+.shoppingList{
+    border: 1px solid gray;
+}
+.profileTabs li>a{
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+    border-right: 1p;
+    font-size: 20px;
+    padding-left: 32px;
+}
+.hr{
+        border-top: 1px solid #EFF;
+
+}
+.currentBadgeImg{
+    width:150px;
+    height: 150px;
+}
+.nextBadge,.currentBadge{
+    font-size: 20px
+}
+#username{
+ 
+    font-size: 40px;
+    font-weight: bold;
+    text-transform: capitalize;
+
+}
+.ourModal{
+    border-bottom: 1px solid #f78e21 !important;
+}
+.ourModalFooter{
+    border-top: 1px solid #f78e21 !important;
+    
+}
+.profileTabs li.active{
+    border:none !important;
+    background-color: none !important;
+    border-bottom-color: #f78e21 !important;
+    border-bottom-style: solid !important;
+    border-bottom-width: 3px !important;
+}
+.profileTabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+    border:none !important;
+}
+.profileTabs > li > a:hover, .nav > li > a:focus{
+    border:none !important;
+    background-color: white !important;
+     border-bottom-color: #c0c0c0 !important;
+    border-bottom-style: solid !important;
+    border-bottom-width: 3px !important;
+}
+
+.img-thumbnail{
+     max-width: 120%;
+}
+
+.btn-black {
+   position: absolute;
+    background-color: #333;
+    border-color: #333;
+    width: 100%;
+    /* height: 6%; */
+    font-size: 110%;
+    opacity: 0.8;
+    border-radius: 4px;
+    color: white;
+    top: 80%;
+    left: 8.6%;
+}
+
+.vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 100%;
+}
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+}
+.modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width:inherit;
+    height:inherit;
+    /* To center horizontally */
+    margin: 0 auto;
+}

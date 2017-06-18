@@ -1,32 +1,20 @@
- <!--course-->
-<div id="courses-container">
-        <div class="container">
-            <div class="row row-centered">
-                <!--course Block-->
-                <div class="col-md-3 col-centered" *ngFor="let course of courses">
-                    <a class="course-link"  [routerLink]="[course._id]">
-                        <div class="thumbnail">
-
-                            <div class="course-icon">
-                              <img src="images/courseIcons/{{course.img}}" style="width:100px;height:100px"/>
-                             
-                                <!--<i class="fa fa-cutlery" aria-hidden="true"></i>-->
-                            </div>
-
-
-
-                            <div class="caption-full">
-                                <h3>{{course.name}}</h3>
-                                <p>{{course.description}}</p>
-                                <h4 class="chapter">{{course.sections.length }} Section </h4>
-                                <!--<button type="button" class="btn btn-success">View course</button>-->
-                            </div>
-
-
-                        </div>
-                    </a>
+<div id="heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-content">
+                    <h2>Courses</h2>
+                    <span>Home >  <a [routerLink]="['/courses']">Courses</a></span>
                 </div>
-                
             </div>
         </div>
     </div>
+</div>
+<!--course-->
+<div id="courses-container">
+    <div class="container" *ngIf="courses">
+        <div class="row row-centered" *ngFor="let course of courses">
+            <app-course [course]=course [currentUser]=user></app-course>
+        </div>
+    </div>
+</div>

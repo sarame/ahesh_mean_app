@@ -1,0 +1,208 @@
+#besideImg{
+  position: absolute;
+  top: 550px;
+  left: 700px;
+  margin-left: 160px;
+}
+
+#recipe_name{
+  width: 300px;
+  margin-bottom: 15px;  
+}
+
+.spinner{
+  width: 55px;
+  margin-bottom: 15px;
+}
+
+#calSpin{
+  width: 75px;
+  margin-bottom: 15px;
+}
+
+.labelSide{
+  margin-right: 13px;
+  margin-left: 20px; 
+}
+
+#infoLabel{
+  color: #f78e21;
+  margin-left: 50px;
+}
+
+
+/* try*/
+#imageUpload
+{
+    display: none;
+}
+
+#profileImage
+{
+    cursor: pointer;
+}
+
+#profile-container {
+    width: 373px;
+    height: 253px;
+    overflow: hidden;
+    float: left;
+    border: 2px solid #f78e21;
+    margin-left: 170px;
+    
+}
+
+#profile-container img {
+    width: 373px;
+    height: 253px;   
+}
+
+#vidBtn{
+  width: 185px;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  background-color: #f78e21; 
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  text-transform: capitalize;
+  border: 0;
+  outline: none;
+  
+}
+
+#addBtn{
+  position: absolute;
+  margin-top: 300px;
+  margin-left: 475px;
+
+}
+
+#stepsDiv{
+  margin-top: 370px;
+  margin-left: 170px;
+}
+
+#stepsLabel{
+  color: #f78e21;
+  margin-left: 150px;
+}
+
+#step{
+  width: 350px;
+  margin-bottom: 20px;
+}
+
+#add{
+  color: green; 
+  font-size: 35px;
+  cursor: pointer;
+  margin-left: 265px;
+  
+}
+
+#remove{
+  color: red; 
+  font-size: 35px;
+  cursor: pointer;
+  margin-left: 14px;
+}
+
+#componentsDiv{
+  margin-left: 700px;
+  margin-top: -204px;
+  
+}
+
+#componentsLabel{
+  margin-left: 90px;
+  color: #f78e21; ;
+}
+
+.spinnerComponents{
+  width: 70px;
+  margin-right: 60px;
+  margin-bottom: 15px;
+}
+
+#addComp{
+  color: green; 
+  font-size: 35px;
+  cursor: pointer;
+  margin-left: 260px;
+  
+}
+
+#removeComp{
+  color: red; 
+  font-size: 35px;
+  cursor: pointer;
+  margin-left: 14px;
+}
+
+/**********************************/
+
+.filterDiv{
+  height:750px;
+  width:250px;
+  float: left;
+  margin-left: 100px;
+  margin-top: -950px;
+}
+
+.spaceDiv{
+  float:left;
+  width:200px;
+  height:700px;
+}
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  font-size: 25px;
+  width: 1.2em;
+  color: #f78e21;
+}
+
+.heartDiv
+{
+  float:right;
+}
+
+.heartDiv span
+{
+  font-size: 22px;
+}
+
+
+
+
+
+[data-toggle="collapse"] {
+  cursor: pointer;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.parent-collapsed {
+  display: none;
+}
+
+.collapsed .parent-expanded {
+    display: none;
+  }
+.collapsed .parent-collapsed {
+    display: inline-block;
+  }

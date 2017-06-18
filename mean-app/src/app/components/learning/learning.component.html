@@ -1,20 +1,61 @@
-<ul class="slides">
-  <li *ngFor="let item of items">
-    <div class="row">
-
-
-      <div class="col-sm-6 col-md-4" *ngFor="let item of ite">
-        <div class="media services-wrap wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">
-          <div class="pull-left">
-            <img class="img-responsive" src="images/services/services1.png">
-          </div>
-          <div class="media-body" style="height:150px">
-            <h3 class="media-heading">{{item.name}}</h3>
-            <p>{{item.description}}</p>
-          </div>
+<div id="services" class="service-item">
+  <div class="container ">
+    <div class="row ">
+      <div class="col-md-12 ">
+        <div class="heading-section ">
+          <h2><a [routerLink]="['/courses']">Courses</a></h2>
+          <img src="images/under-heading1.png " alt=" ">
         </div>
       </div>
-
     </div>
-  </li>
-</ul>
+    <div class="row">
+      <div class="col-md-11">
+
+
+        <div id="slider">
+          <ul>
+            <li *ngFor="let item of items">
+              <div class="slider-container">
+                <div class="col-sm-6 col-md-4"  *ngFor="let item of ite">
+                  <div class="media services-wrap wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">
+                    <div class="pull-left">
+                      <img class="img-responsive" width="80" style="border-radius:10%" src="images/{{item.img}}">
+                    </div>
+                    <div class="media-body" style="height:150px">
+                      <h3 class="media-heading"><a [routerLink]="['/courses/course/',item._id]">{{item.name}}</a></h3>
+                      <p>{{item.description}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+
+        <!--<div class="testimonails-slider">
+          <ul class="slides">
+            <li *ngFor="let item of items">
+              <div class="row">
+
+
+                <div class="col-sm-6 col-md-4" *ngFor="let item of ite">
+                  <div class="media services-wrap wow fadeInDown animated" style="visibility: visible; animation-name: fadeInDown;">
+                    <div class="pull-left">
+                      <img class="img-responsive" width="100" src="images/{{item.img}}">
+                    </div>
+                    <div class="media-body" style="height:150px">
+                      <h3 class="media-heading"><a [routerLink]="['/courses/',item._id]">{{item.name}}</a></h3>
+                      <p>{{item.description}}</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </li>
+          </ul>
+        </div>-->
+      </div>
+    </div>
+  </div>
+</div>

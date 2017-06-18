@@ -15,14 +15,15 @@ var recipeSchema = new Schema({
     date: { type: String },
     description: { type: String, require: true },
     size: { type: Number, default: 1 },
-
     user: { type: Schema.Types.ObjectId, ref: "user" },
     ingerdients: [{ type: Schema.Types.ObjectId, ref: "ingredient" }],
     reviews: [{ type: Schema.Types.ObjectId, ref: "review" }],
-    steps : [{step:{
-        type: String
-    }}], 
-    tags:[{type: Schema.Types.ObjectId, ref: "tag"}]
+    steps: [{
+        step: {
+            type: String
+        }
+    }],
+    tags: [{ type: Schema.Types.ObjectId, ref: "tag" }]
 }, { strict: true });
 module.exports = mongoose.model("recipe", recipeSchema);
 

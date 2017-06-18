@@ -5,6 +5,26 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "extensionHost",
+            "request": "launch",
+            "name": "Launch Extension",
+            "runtimeExecutable": "${execPath}",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceRoot}"
+            ],
+            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceRoot}/out/**/*.js"
+            ],
+            "preLaunchTask": "npm"
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "Attach",
+            "port": 5858
+        },
+        {
             "type": "node",
             "request": "launch",
             "name": "Launch Program",

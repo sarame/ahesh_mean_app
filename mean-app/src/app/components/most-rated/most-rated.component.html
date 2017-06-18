@@ -2,124 +2,34 @@
 <div id="latest-blog ">
   <div class="container ">
     <div class="row ">
-      <div class="col-md-12 ">
+      <div class="col-md-12">
         <div class="heading-section ">
-          <h2>Most rated</h2>
+          <h2><a [routerLink]="['/recipes']">Most rated</a></h2>
           <img src="images/under-heading1.png " alt=" ">
         </div>
       </div>
     </div>
-    <div class="row ">
-
-      <div class="col-md-4 col-sm-6">
+    <div class="row" *ngIf="items">
+      <div class="col-md-4 col-sm-6" *ngFor="let item of items">
         <div class="blog-post">
-          <div class="blog-thumb">
-            <img src="images/gallery/{{items[0].img}}" alt=" " />
+          <div class="blog-thumb hover15">
+            <figure><img src="images/gallery/{{item.img}}" alt=" " /></figure>
+
           </div>
-          <div class="blog-content">
+          <div class="blog-content" appShowDiv appHideDiv>
             <div class="content-show">
-              <h4><a href="#">{{items[0].name}}</a></h4>
-              <span>{{items[0].date}}</span><span>-</span><span>{{items[0].avgRate}}</span>
+              <img src="images/{{item.user.img}}" style="float: left;border-radius: 50%; width:40px" alt="">
+              <h3 style="margin-left: 40px;margin-top: 6px;padding: 7px;">{{item.user.name}}</h3>
+              <h4 style="display: inline-grid;clear: both;"><a (click)="saveRecipeId(item._id)">{{item.name}}</a></h4>
+              <span style=" margin-left: 10px;" [star]="item.avgRate"></span>
+              <span style="display:block">{{item.date}}</span>
+
             </div>
             <div class="content-hide">
-              <p>{{items[0].description}}</p>
+              <p>{{item.description}}</p>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="col-md-4 col-sm-6">
-        <div class="blog-post">
-          <div class="blog-thumb">
-            <img src="images/gallery/{{items[1].img}}" alt=" " />
-          </div>
-          <div class="blog-content">
-            <div class="content-show">
-              <h4><a href="#">{{items[1].name}}</a></h4>
-              <span>{{items[1].date}}</span><span>-</span><span>{{items[1].avgRate}}</span>
-            </div>
-            <div class="content-hide">
-              <p>{{items[1].description}}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <div class="blog-post">
-          <div class="blog-thumb">
-            <img src="images/gallery/{{items[2].img}}" alt=" " />
-          </div>
-          <div class="blog-content">
-            <div class="content-show">
-              <h4><a href="#">{{items[2].name}}</a></h4>
-              <span>{{items[2].date}}</span><span>-</span><span>{{items[2].avgRate}}</span>
-            </div>
-            <div class="content-hide">
-              <p>{{items[2].description}}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-
-
-    <div class="row ">
-
-
-      <div class="col-md-4 col-sm-6">
-        <div class="blog-post">
-          <div class="blog-thumb">
-            <img src="images/gallery/{{items[3].img}}" alt=" " />
-          </div>
-          <div class="blog-content">
-            <div class="content-show">
-              <h4><a href="#">{{items[3].name}}</a></h4>
-              <span>{{items[3].date}}</span><span>-</span><span>{{items[3].avgRate}}</span>
-            </div>
-            <div class="content-hide">
-              <p>{{items[3].description}}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="col-md-4 col-sm-6">
-        <div class="blog-post">
-          <div class="blog-thumb">
-            <img src="images/gallery/{{items[4].img}}" alt=" " />
-          </div>
-          <div class="blog-content">
-            <div class="content-show">
-              <h4><a href="#">{{items[4].name}}</a></h4>
-              <span>{{items[4].date}}</span><span>-</span><span>{{items[4].avgRate}}</span>
-            </div>
-            <div class="content-hide">
-              <p>{{items[4].description}}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-sm-6">
-        <div class="blog-post">
-          <div class="blog-thumb">
-            <img src="images/gallery/{{items[5].img}}" alt=" " />
-          </div>
-          <div class="blog-content">
-            <div class="content-show">
-              <h4><a href="#">{{items[5].name}}</a></h4>
-              <span>{{items[5].date}}</span><span>-</span><span>{{items[5].avgRate}}</span>
-            </div>
-            <div class="content-hide">
-              <p>{{items[5].description}}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
-</div>

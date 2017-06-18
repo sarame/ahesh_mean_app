@@ -15,6 +15,14 @@ function GetAll(req, res) {
             select: 'name -_id'
         })
         .populate({
+            path: 'visitedRecipes',
+            select: 'name tags -_id',
+            populate: {
+                path: 'tags',
+                select: 'name'
+            }
+        })
+        .populate({
             path: 'enrolledCourse.course',
             select: '-_id',
         })
@@ -31,19 +39,41 @@ function Add(req, res) {
     newuser.save().then(_result => res.json(_result))
         .catch(_err => res.status(500).send())
 }
+
+function GetVisitedRecipeWithTagById(req, res) {
+    user.findById(req.params.id)
+        .populate({
+            path: 'visitedRecipes',
+            select: 'tags -_id',
+            populate: {
+                path: 'tags',
+                select: 'name'
+            }
+        })
+        .then(_result => res.json(_result.visitedRecipes))
+        .catch(_err => res.status(500).send())
+}
+
+
+function GetVisitedRecipeById(req, res) {
+    user.findById(req.params.id)
+        .then(_result => res.json(_result.visitedRecipes))
+        .catch(_err => res.status(500).send())
+}
+
+
 function GetById(req, res) {
     user.findById(req.params.id)
         .populate({
             path: 'recipes',
-            select: 'name -_id'
+            select: 'name avgRate img _id'
         })
         .populate({
-            path: 'fevRecipes',
-            select: ' -_id'
+            path: 'fevRecipes'
         })
         .populate({
-            path: 'shoppingList',
-            select: 'name -_id'
+            path: 'shoppingList.ingredient shoppingList.unitType',
+            select: 'name _id'
         })
         .populate({
             path: 'enrolledCourse.course',
@@ -54,6 +84,7 @@ function GetById(req, res) {
             select: '-_id',
         })
         .populate('badges.badgeid')
+        .populate({ path: 'currentBadge' }).populate({ path: 'nextBadge' })
         .then(_result => res.json(_result))
         .catch(_err => res.status(500).send())
 }
@@ -65,7 +96,8 @@ function Delete(req, res) {
 
 function Update(req, res) {
     console.log("params  " + req.params);
-    user.findByIdAndUpdate(req.params.id, req.body).then(_result => res.json("data is updated: " + _result))
+    console.log(req.body);
+    user.findByIdAndUpdate(req.params.id, req.body).then(_result => res.json(_result))
         .catch(_err => res.status(500).send())
 }
 //check the user is exist of not 
@@ -102,13 +134,47 @@ function GetByEmail(req, res) {
         .then(_result => res.json("data is : " + _result))
         .catch(_err => res.status(500).send())
 }
+
+
+function GetFevRecipes(req, res) {
+    user.findById(req.params.id)
+        .populate({
+            path: 'fevRecipes',
+            select: 'name avgRate img _id user tags totalCalories',
+            populate: {
+                path: 'user tags',
+                select: 'name img _id',
+            }
+        }).select('fevRecipes -_id')
+        .then(_result => res.json(_result.fevRecipes))
+        .catch(_err => res.status(500).send());
+}
+
+function GetUserRecipes(req, res) {
+    user.findById(req.params.id)
+        .populate({
+            path: 'recipes',
+            select: 'name avgRate img _id user tags totalCalories',
+            populate: {
+                path: 'user tags',
+                select: 'name img _id',
+            }
+        }).select('recipes -_id')
+        .then(_result => res.json(_result.recipes))
+        .catch(_err => res.status(500).send());
+}
+
 module.exports = {
     Add: Add,
     GetAll: GetAll,
     GetById: GetById,
     Delete: Delete,
     Update: Update,
-    GetByEmail: GetByEmail
+    GetByEmail: GetByEmail,
+    GetFevRecipes: GetFevRecipes,
+    GetUserRecipes: GetUserRecipes,
+    GetVisitedRecipeById: GetVisitedRecipeById,
+    GetVisitedRecipeWithTagById: GetVisitedRecipeWithTagById
 }
 
 

@@ -8,68 +8,46 @@ import { HomeService } from '../../services/homeServices/home.service';
 })
 export class MostRatedComponent implements OnInit {
 
+  userId = "";
+
   // instantiate posts to an empty array
-  items: any = [{
-    name: "",
-    img: "",
-    time: "",
-    date: "",
-    description: "",
-    avgRate: 0
-  }, {
-    name: "",
-    img: "",
-    time: "",
-    date: "",
-    description: "",
-    avgRate: 0
-  }, {
-    name: "",
-    img: "",
-    time: "",
-    date: "",
-    description: "",
-    avgRate: 0
-  }, {
-    name: "",
-    img: "",
-    time: "",
-    date: "",
-    description: "",
-    avgRate: 0
-  }, {
-    name: "",
-    img: "",
-    time: "",
-    date: "",
-    description: "",
-    avgRate: 0
-  }, {
-    name: "",
-    img: "",
-    time: "",
-    date: "",
-    description: "",
-    avgRate: 0
-  }, {
-    name: "",
-    img: "",
-    time: "",
-    date: "",
-    description: "",
-    avgRate: 0
-  }];
+  items: any = [];
+  visitRecipes: any = [];
 
 
   constructor(private homeService: HomeService) { }
 
   ngOnInit() {
-    // Retrieve posts from the API
+
     this.homeService.getAllRecipes().subscribe(items => {
       this.items = items;
-     // console.log(items);
+      // console.log(items);
     });
   }
+  saveRecipeId(recId) {
 
+
+    if (this.userId) {
+      this.homeService.getAllVisitRecipe(this.userId).subscribe(rec => {
+
+
+        var index = rec.indexOf(recId);    // <-- Not supported in <IE9
+        if (index !== -1) {
+          rec.splice(index, 1);
+        }
+        this.visitRecipes = rec;
+        this.visitRecipes[this.visitRecipes.length] = recId;
+        console.log(this.visitRecipes);
+
+        this.homeService.putVisitRecipe(this.userId, { visitedRecipes: this.visitRecipes }).subscribe(d => {
+          console.log(d);
+        });
+
+      });
+    }
+
+
+
+  }
 }
 

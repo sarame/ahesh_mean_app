@@ -12,6 +12,6 @@ export class ProfileService {
   }
 
   UpdateById(id: string, profileData: any) {
-    this.http.put("/api/user/" + id, profileData).map(x => x.json()).subscribe();
+    this.http.put(`/api/user/${id}`, profileData).map(x => x.json()).subscribe();
   }
 }

@@ -4,7 +4,7 @@ var tag = require("../collections/tag");
 function GetAll(req, res) {
     tag.find({}).populate({
         path: 'recipes',
-        select: '-_id',
+        select:'-_id'
     }).then(_result => res.json(_result))
         .catch(_err => res.status(500).send())
 }
@@ -14,33 +14,28 @@ function AddTag(req, res) {
         .catch(_err => res.status(500).send())
 }
 function GetById(req, res) {
-    tag.findById(req.params.id).then(_result => res.json("data is : " + _result))
+    tag.findById(req.params.id)
+    .populate({
+            path: 'recipes'
+        }).then(_result => res.json( _result))
         .catch(_err => res.status(500).send())
 }
 
 function Delete(req, res) {
-    tag.findByIdAndRemove(req.params.id).then(_result => res.json("data is deleted: " + _result))
+    tag.findByIdAndRemove(req.params.id).then(_result => res.json(_result))
         .catch(_err => res.status(500).send())
 }
 
 function Update(req, res) {
     console.log("params  " + req.params);
-    tag.findByIdAndUpdate(req.params.id, req.body).then(_result => res.json("data is updated: " + _result))
+    tag.findByIdAndUpdate(req.params.id, req.body).then(_result => res.json( _result))
         .catch(_err => res.status(500).send())
 }
 
-// function GetAllRandam(req, res) {
-//     tag.aggregate(
-//         [{ $sample: { size: 6 } }]
-//     ).find({}).populate({
-//         path: 'recipes',
-//         select: '-_id',
-//     }).then(_result => res.json(_result))
-//         .catch(_err => res.status(500).send())
-// }
+
 function GetAllRandam(req, res) {
     tag.aggregate(
-        [{ $sample: { size: 5 } }],
+        [{ $sample: { size: 3 } }],
         function (err, results) {
             tag.populate(results, { "path": "recipes", select: '-_id' }, function (err, results) {
                 if (err) throw err;

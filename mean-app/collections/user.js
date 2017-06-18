@@ -11,18 +11,25 @@ var userSchema = new Schema({
     email: { type: String },
     password: { type: String },
     bio: { type: String },
+    visitedRecipes: [{ type: Schema.Types.ObjectId, ref: "recipe" }],
     recipes: [{ type: Schema.Types.ObjectId, ref: "recipe" }],
     fevRecipes: [{ type: Schema.Types.ObjectId, ref: "recipe" }],
-    shoppingList: [{ type: Schema.Types.ObjectId, ref: "ingredient" }],
+    shoppingList: [{
+        ingredient: { type: Schema.Types.ObjectId, ref: "ingredient" },
+        unitType: { type: Schema.Types.ObjectId, ref: "unitType" },
+        amount: { type: Number }
+    }],
     enrolledCourse: [{
         course: { type: Schema.Types.ObjectId, ref: "course" },
-        visitedSections:  [{type:Schema.Types.ObjectId, ref:"section" }]
+        visitedSections: [{ type: Schema.Types.ObjectId, ref: "section" }]
     }],
     badges: [{
-        badgeid: { type: Schema.Types.ObjectId, ref: "badge" }, 
+        badgeid: { type: Schema.Types.ObjectId, ref: "badge" },
         date: { type: String },
         time: { type: String }
-    }]
+    }],
+    currentBadge: { type: Schema.Types.ObjectId, ref: "badge" },
+    nextBadge: { type: Schema.Types.ObjectId, ref: "badge" }
 
 }, { strict: true });
 

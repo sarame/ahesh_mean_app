@@ -1,0 +1,68 @@
+<!--<div id="profile-container">
+<img id="profileImage" [src]="src" [hidden]="!src" alt="add Picture" />
+ 
+<input id="imageUpload" placeholder="Photo" name="profile_photo" type="file" 
+imageUpload (imageSelected)="selected($event)"
+[resizeOptions]="resizeOptions" required="" capture>
+               
+</div>-->
+
+
+<img *ngIf="oldImg" [src]="oldImg" class="img-thumbnail" width="200" height="200" style="border-radius: 50%;" (mouseout)="mouseEvent($event)"
+    (mouseover)="mouseEvent($event)" alt="">
+<button id="btn_Change_Profile" [style.display]="displayType" style="position: absolute;top: 115px;left: 25px;" (click)="fileOpenListener()"
+    data-toggle="modal" data-target="#myModal" class="btn btn-warning" (mouseover)="mouseEvent($event)" (mouseout)="mouseEvent($event)">
+        <span class="glyphicon glyphicon-camera"></span>
+        Change Photo
+      </button>
+<!--<div class="content-hide">
+    <button type="button" class="btn btn-info" style="margin-left: 30%;" (click)="fileOpenListener()" data-toggle="modal" data-target="#myModal">Update</button>
+</div>-->
+<!--</div>
+</div>-->
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title text-center">Upload Profile Image</h3>
+            </div>
+            <div class="modal-body">
+                <div class="pull-left">
+
+                    <div class="file-upload">
+                        <span class="text">Upload</span>
+                        <input id="custom-input" type="file" (change)="fileChangeListener($event)">
+                    </div>
+
+                    <img-cropper #cropper [image]="data2" [settings]="cropperSettings2"></img-cropper>
+                    <br>
+                    <span class="result rounded" *ngIf="data2.image">
+                <img [src]="data2.image" [width]="cropperSettings2.croppedWidth" [height]="cropperSettings2.croppedHeight">
+            </span>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button *ngIf="data2.image" type="button" class="btn btn-warning" (click)="save(data2.image)" data-dismiss="modal"> Save </button>
+                <button *ngIf="data2.image" type="button" class="btn btn-warning" (click)="delete(data2.image)" data-dismiss="modal"> Delete </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--</div>
+
+
+<div>
+
+
+</div>-->
