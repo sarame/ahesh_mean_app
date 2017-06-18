@@ -1,0 +1,20 @@
+<div id="heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-content">
+                    <h2>Courses</h2>
+                    <span>Home >  <a [routerLink]="['/courses']">Courses</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--course-->
+<div id="courses-container">
+    <div class="container" *ngIf="courses">
+        <div class="row row-centered" *ngFor="let course of courses">
+            <app-course [course]=course [currentUser]=user></app-course>
+        </div>
+    </div>
+</div>

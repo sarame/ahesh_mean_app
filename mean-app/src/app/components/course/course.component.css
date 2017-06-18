@@ -1,0 +1,30 @@
+.ourCourse{
+    width:100%;
+    background-color: rgba(220,220,220,0.2);
+
+}
+
+.img-responsive{
+    height: 400px;
+}
+.sections{
+        font-weight: bold;
+}
+.sectionList li{
+    color: #f78e21;
+    font-size: 19px;
+    padding-left: 20px;
+}
+.courseName{
+    margin-left: 40%;
+    font-weight: bold;
+    color: #428bca;
+}
+.courseImage{
+    padding: 0 !important;
+    margin-bottom: 0 !important;
+    width:100%
+}
+.viewMore{
+    text-align: center;
+}

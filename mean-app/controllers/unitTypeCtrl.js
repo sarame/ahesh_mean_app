@@ -16,6 +16,7 @@ function GetById(req,res){
 
 function GetByName(req,res){
     unitType.find({"name":req.params.name}).then(_result=>res.json(_result))
+
     .catch(_err=>res.status(500).send())
 }
 
@@ -26,7 +27,7 @@ function Delete(req,res){
 
 function Update(req,res){
     console.log("params  "+req.params);
-    unitType.findByIdAndUpdate(req.params.id,req.body).then(_result=>res.json(s_result))
+    unitType.findByIdAndUpdate(req.params.id,req.body).then(_result=>res.json(_result))
     .catch(_err=>res.status(500).send())
 }
 module.exports={

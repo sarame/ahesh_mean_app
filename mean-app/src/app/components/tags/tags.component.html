@@ -1,132 +1,219 @@
-<div class="parrent pull-left">
-  <ul class="nav nav-tabs nav-stacked">
-<<<<<<< HEAD
-    <li class=""> <a href="#tab1" data-toggle="tab" class="analistic-01">Healthy</a></li>
-    <li class="active"><a href="#tab2" data-toggle="tab" class="analistic-02 ">Hot</a></li>
-    <li class=""> <a href="#tab3" data-toggle="tab" class="tehnical">Diet</a></li>
-    <li class=""><a href="#tab4" data-toggle="tab" class="tehnical">Pizza</a></li>
-    <li class=""><a href="#tab5" data-toggle="tab" class="tehnical">vagitarian</a></li>
-=======
-    <li class=""> <a href="#tab1" data-toggle="tab" class="analistic-01">{{items[0].name}}</a></li>
-    <li class="active"><a href="#tab2" data-toggle="tab" class="analistic-02 ">{{items[1].name}}</a></li>
-    <li class=""> <a href="#tab3" data-toggle="tab" class="tehnical">{{items[2].name}}</a></li>
-    <li class=""><a href="#tab4" data-toggle="tab" class="tehnical">{{items[3].name}}</a></li>
-    <li class=""><a href="#tab5" data-toggle="tab" class="tehnical">{{items[4].name}}</a></li>
->>>>>>> 9ed682b722c5497d5ae23ddf593ec0d4c75c43ef
-  </ul>
-</div>
-
-<div class="parrent media-body">
-  <div class="tab-content">
-    <div class="tab-pane fade" id="tab1">
-      <div class="media">
-        <div class="pull-left">
-<<<<<<< HEAD
-          <img class="img-responsive" width="300px" src="./images/gallery/img3.jpg">
-        </div>
-        <div class="media-body ">
-          <h2>Bottle wayfarers locavoret</h2>
-          <p>Bottle wayfarers locavore Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ornare sem sit amet mauris
-            bibendum, ac fringilla quam eleifend.
-=======
-          <img class="img-responsive" width="300px" src="./images/gallery/{{items[0].recipes[0].img}}">
-        </div>
-        <div class="media-body ">
-          <h2>{{items[0].recipes[0].name}}</h2>
-          <p>{{items[0].recipes[0].description}}
->>>>>>> 9ed682b722c5497d5ae23ddf593ec0d4c75c43ef
-          </p>
+<div id="Tags">
+  <div class="container ">
+    <div class="row ">
+      <div class="col-md-12 wow fadeInDown">
+        <div class="heading-section ">
+          <h2> <a [routerLink]="['/recipes/filter/allRecipes']"></a> Topics </h2>
+          <img src="images/under-heading1.png " alt=" ">
         </div>
       </div>
     </div>
 
-    <div class="tab-pane fade active in" id="tab2">
-      <div class="media">
-        <div class="pull-left">
-<<<<<<< HEAD
-          <img class="img-responsive" width="300px" src="./images/gallery/img3.jpg">
+
+    <div class="row">
+      <div class="col-sm-6 col-md-4 {{displayFirDivOne}}">
+        <div class="thumbnail hover08 " *ngIf="data1">
+          <img src="images/gallery/{{data1.recipes[0].img}}" alt="...">
+          <div class="caption">
+            <h3>{{data1.recipes[0].name}}</h3>
+            <p>{{data1.recipes[0].description}}</p>
+            <p align="center"><a href="#" class="btn btn-warning" style="font-size:20px" role="button">{{data1.name}}</a></p>
+            <hr>
+            <nav aria-label="...">
+              <ul class="pager">
+                <li class="disabled "><a>Previous</a></li>
+                <li></li>
+                <li><a (click)="nextEltOne()">Next</a></li>
+              </ul>
+            </nav>
+          </div>
         </div>
-        <div class="media-body ">
-          <h2>Bottle wayfarers locavoret</h2>
-          <p>Bottle wayfarers locavore Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ornare sem sit amet mauris
-            bibendum, ac fringilla quam eleifend.
-=======
-          <img class="img-responsive" width="300px" src="./images/gallery/{{items[1].recipes[0].img}}">
+      </div>
+
+      <div class="col-sm-6 col-md-4  {{displaySecDivOne}}">
+        <div class="thumbnail hover08 " *ngIf="data1">
+          <img src="images/gallery/{{data1.recipes[1].img}}" alt="...">
+          <div class="caption">
+            <h3>{{data1.recipes[1].name}}</h3>
+            <p>{{data1.recipes[1].description}}</p>
+            <p align="center"><a href="#" class="btn btn-warning" style="font-size:20px" role="button">{{data1.name}}</a></p>
+            <hr>
+            <nav aria-label="...">
+              <ul class="pager">
+                <li><a (click)="PreEltOne()">Previous</a></li>
+                <li></li>
+                <li class="disabled"><a>Next</a></li>
+              </ul>
+            </nav>
+          </div>
         </div>
-        <div class="media-body ">
-          <h2>{{items[1].recipes[0].name}}</h2>
-          <p>{{items[1].recipes[0].description}}
->>>>>>> 9ed682b722c5497d5ae23ddf593ec0d4c75c43ef
-          </p>
+      </div>
+
+      <div class="col-sm-6 col-md-4 {{displayFirDivSec}}">
+        <div class="thumbnail hover08" *ngIf="data2">
+          <img src="images/gallery/{{data2.recipes[0].img}}" alt="...">
+          <div class="caption">
+            <h3>{{data2.recipes[0].name}}</h3>
+            <p>{{data2.recipes[0].description}}</p>
+            <p align="center"><a href="#" class="btn btn-warning" style="font-size:20px" role="button">{{data2.name}}</a></p>
+            <hr>
+            <nav aria-label="...">
+              <ul class="pager">
+                <li class="disabled"><a>Previous</a></li>
+                <li></li>
+                <li><a (click)="nextEltSec()">Next</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4  {{displaySecDivSec}}">
+        <div class="thumbnail hover08" *ngIf="data2">
+          <img src="images/gallery/{{data2.recipes[1].img}}" alt="...">
+          <div class="caption">
+            <h3>{{data2.recipes[1].name}}</h3>
+            <p>{{data2.recipes[1].description}}</p>
+            <p align="center"><a href="#" class="btn btn-warning" style="font-size:20px" role="button">{{data2.name}}</a></p>
+            <hr>
+            <nav aria-label="...">
+              <ul class="pager">
+                <li><a (click)="PreEltSec()">Previous</a></li>
+                <li></li>
+                <li class="disabled"><a>Next</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 {{displayFirDivTrd}}">
+        <div class="thumbnail hover08" *ngIf="data3">
+          <img src="images/gallery/{{data3.recipes[0].img}}" alt="...">
+          <div class="caption">
+            <h3>{{data3.recipes[0].name}}</h3>
+            <p>{{data3.recipes[0].description}}</p>
+            <p align="center"><a href="#" class="btn btn-warning" style="font-size:20px" role="button">{{data3.name}}</a></p>
+            <hr>
+            <nav aria-label="...">
+              <ul class="pager">
+                <li class="disabled"><a>Previous</a></li>
+                <li></li>
+                <li><a (click)="nextEltTrd()">Next</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4  {{displaySecDivTrd}}">
+        <div class="thumbnail hover08" *ngIf="data3">
+          <img src="images/gallery/{{data3.recipes[1].img}}" alt="...">
+          <div class="caption">
+            <h3>{{data3.recipes[1].name}}</h3>
+            <p>{{data3.recipes[1].description}}</p>
+            <p align="center"><a href="#" class="btn btn-warning" style="font-size:20px" role="button">{{data3.name}}</a></p>
+            <hr>
+            <nav aria-label="...">
+              <ul class="pager">
+                <li><a (click)="PreEltTrd()">Previous</a></li>
+                <li></li>
+                <li class="disabled"><a>Next</a></li>
+              </ul>
+            </nav>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="tab-pane fade" id="tab3">
-      <div class="media">
-        <div class="pull-left">
-<<<<<<< HEAD
-          <img class="img-responsive" width="300px" src="./images/gallery/img3.jpg">
-        </div>
-        <div class="media-body ">
-          <h2>Bottle wayfarers locavoret</h2>
-          <p>Bottle wayfarers locavore Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ornare sem sit amet mauris
-            bibendum, ac fringilla quam eleifend.
-=======
-          <img class="img-responsive" width="300px" src="./images/gallery/{{items[2].recipes[0].img}}">
-        </div>
-        <div class="media-body ">
-          <h2>{{items[2].recipes[0].name}}</h2>
-          <p>{{items[2].recipes[0].description}}
->>>>>>> 9ed682b722c5497d5ae23ddf593ec0d4c75c43ef
-          </p>
-        </div>
-      </div>
-    </div>
 
-    <div class="tab-pane fade" id="tab4">
-      <div class="media">
-        <div class="pull-left">
-<<<<<<< HEAD
-          <img class="img-responsive" width="300px" src="./images/gallery/img3.jpg">
-        </div>
-        <div class="media-body ">
-          <h2>Bottle wayfarers locavoret</h2>
-          <p>Bottle wayfarers locavore Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ornare sem sit amet mauris
-            bibendum, ac fringilla quam eleifend.
-=======
-          <img class="img-responsive" width="300px" src="./images/gallery/{{items[3].recipes[0].img}}">
-        </div>
-        <div class="media-body ">
-          <h2>{{items[3].recipes[0].name}}</h2>
-          <p>{{items[2].recipes[0].description}}
->>>>>>> 9ed682b722c5497d5ae23ddf593ec0d4c75c43ef
-          </p>
-        </div>
-      </div>
-    </div>
+    <!--<div class="row ">
+      <div class="col-xs-12 col-sm-8 col-md-10 ">
+        <div class="container">
+          <div class="tab-wrap ">
+            <div class="media ">
+              <div class="parrent pull-left">
+                <ul class="nav nav-tabs nav-stacked">
+                  <li class=""> <a href="#tab1" data-toggle="tab" class="analistic-01">{{items[0].name}}</a></li>
+                  <li class="active"><a href="#tab2" data-toggle="tab" class="analistic-02 ">{{items[1].name}}</a></li>
+                  <li class=""> <a href="#tab3" data-toggle="tab" class="tehnical">{{items[2].name}}</a></li>
+                  <li class=""><a href="#tab4" data-toggle="tab" class="tehnical">{{items[3].name}}</a></li>
+                  <li class=""><a href="#tab5" data-toggle="tab" class="tehnical">{{items[4].name}}</a></li>
+                </ul>
+              </div>
 
-    <div class="tab-pane fade" id="tab5">
-      <div class="media">
-        <div class="pull-left">
-<<<<<<< HEAD
-          <img class="img-responsive" width="300px" src="./images/gallery/img3.jpg">
-        </div>
-        <div class="media-body ">
-          <h2>Bottle wayfarers locavoret</h2>
-          <p>Bottle wayfarers locavore Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ornare sem sit amet mauris
-            bibendum, ac fringilla quam eleifend.
-=======
-          <img class="img-responsive" width="300px" src="./images/gallery/{{items[4].recipes[0].img}}" >
-        </div>
-        <div class="media-body ">
-          <h2>{{items[4].recipes[0].name}}</h2>
-          <p>{{items[4].recipes[0].description}}
->>>>>>> 9ed682b722c5497d5ae23ddf593ec0d4c75c43ef
-          </p>
+              <div class="parrent media-body">
+                <div class="tab-content">
+                  <div class="tab-pane fade" id="tab1">
+                    <div class="media">
+                      <div class="pull-left">
+                        <img class="img-responsive" width="300px" src="./images/gallery/{{items[0].recipes[0].img}}">
+                      </div>
+                      <div class="media-body ">
+                        <h2>{{items[0].recipes[0].name}}</h2>
+                        <p>{{items[0].recipes[0].description}}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="tab-pane fade active in" id="tab2">
+                    <div class="media">
+                      <div class="pull-left">
+                        <img class="img-responsive" width="300px" src="./images/gallery/{{items[1].recipes[0].img}}">
+                      </div>
+                      <div class="media-body ">
+                        <h2>{{items[1].recipes[0].name}}</h2>
+                        <p>{{items[1].recipes[0].description}}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="tab-pane fade" id="tab3">
+                    <div class="media">
+                      <div class="pull-left">
+                        <img class="img-responsive" width="300px" src="./images/gallery/{{items[2].recipes[0].img}}">
+                      </div>
+                      <div class="media-body ">
+                        <h2>{{items[2].recipes[0].name}}</h2>
+                        <p>{{items[2].recipes[0].description}}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="tab-pane fade" id="tab4">
+                    <div class="media">
+                      <div class="pull-left">
+                        <img class="img-responsive" width="300px" src="./images/gallery/{{items[3].recipes[0].img}}">
+                      </div>
+                      <div class="media-body ">
+                        <h2>{{items[3].recipes[0].name}}</h2>
+                        <p>{{items[2].recipes[0].description}}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="tab-pane fade" id="tab5">
+                    <div class="media">
+                      <div class="pull-left">
+                        <img class="img-responsive" width="300px" src="./images/gallery/{{items[4].recipes[0].img}}">
+                      </div>
+                      <div class="media-body ">
+                        <h2>{{items[4].recipes[0].name}}</h2>
+                        <p>{{items[4].recipes[0].description}}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </div>-->
   </div>
-  <!--/.tab-content-->
 </div>

@@ -1,0 +1,40 @@
+<div id="heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-content">
+                    <h2>{{course.name}}</h2>
+                    <span>Home > <a [routerLink]="['/courses']">Courses</a> ><a [routerLink]="['/courses/course/',course._id]">{{course.name}}</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Course container-->
+<div class="container sections-container">
+    <div class="row bhoechie-tab-container">
+        <!--tab menu of sections-->
+        <div class="col-lg-3 bhoechie-tab-menu sections">
+
+            <div class="list-group " *ngIf="course.sections">
+
+                <a (click)="changeActive(index)" [ngClass]="{'active': isActive[index]}" class="list-group-item text-center" *ngFor="let section of course.sections; let index=index">
+                    <h4 class="fa fa-cutlery"></h4><br/>{{section.title}}
+                </a>
+            </div>
+        </div>
+        <!--section tab-->
+        <div class="col-lg-9 bhoechie-tab sectionContent" *ngIf="course.sections">
+
+            <div class="bhoechie-tab-content " [ngClass]="{'active': isActive[index]}" *ngFor="let section of course.sections;let index=index">
+
+                <h1 style="font-size:14em;color:#A9A9A9">
+                    <img style="width:100px;height:100px" src="images/cooking.png" />
+                </h1>
+                <h2 style="margin-top: 0;color:#A9A9A9">{{section.title}}</h2>
+                <h3 style="margin-top: 0;color:#A9A9A9">{{section.text}}</h3>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,161 @@
+<div class="container">
+  <div class="jumbotron row tabContent" style="background-color: rgba(78, 172, 22, 0.22);" *ngIf="profileData">
+    <div class="col-md-2 col-md-offset-1">
+
+      <!--<img [src]="src" [hidden]="!src"><br>
+      <input type="file" imageUpload (imageSelected)="selected($event)" [resizeOptions]="resizeOptions" capture>-->
+      <!--<image-upload [url]="'http://localhost:3000/pubimages'" [headers]="[
+    {header: 'Authorization', value: 'MyToken'}]" (onFileUploadFinish)="imageUploaded($event)"></image-upload>-->
+
+      <!--<button id="btn_Change_Profile" [style.display]="displayType" class="btn btn-black" (mouseover)="mouseEvent($event)" (mouseout)="mouseEvent($event)">
+        <span class="glyphicon glyphicon-camera"></span>
+        Change Photo
+      </button>-->
+      <app-image></app-image>
+      <!--<img id="profileImg" class="img-thumbnail" src="images/{{profileData.img}}" width="200" height="200" (mouseover)="mouseEvent($event)"
+        (mouseout)="mouseEvent($event)" />-->
+
+    </div>
+    <div class="col-md-4" style="margin-top: 3%; margin-left: 4%;">
+      <h2 id="username">{{profileData.name}}</h2>
+      <h4 class="nextBadge">Next Badge : <span style="font-weight:bold" [style.color]="color">{{profileData.nextBadge.name}} </span> - {{valuePrecentage}}%
+      </h4>
+    </div>
+    <div class="col-md-4 text-center">
+      <div><img class="currentBadgeImg" src="/images/{{profileData.currentBadge.img}}"></div>
+      <h4 class="currentBadge text-center">Current Badge: <span style="font-weight:bold" [style.color]="badgeColor">{{profileData.currentBadge.name}}</span></h4>
+    </div>
+  </div>
+  <div class="row">
+    <ul class="nav nav-tabs profileTabs">
+      <li role="presentation" class="active"><a class="recpLink" href="#favourite" data-toggle="tab">Favourite</a></li>
+      <li role="presentation"><a href="#info" data-toggle="tab">Info</a></li>
+      <li role="presentation"><a class="recpLink" href="#yourRecipes" data-toggle="tab">Your Recipes</a></li>
+      <li role="presentation"><a href="#shoppingList" data-toggle="tab">Shopping List</a></li>
+    </ul>
+  </div>
+  <div class="row tab-content tabContent">
+    <div class="tab-pane active" id="favourite" style="margin-top: 30px;">
+      <div class="col-md-3">
+        <app-filter [recipeType]="'fevRecipes'" (sendRecipes)="onSendFav($event)"></app-filter>
+      </div>
+      <div class="col-md-9" *ngIf="fevRecipes">
+        <app-recipesView [recipes]="fevRecipes" [user]="profileData" [recipesFlag]="'true'"></app-recipesView>
+      </div>
+    </div>
+    <!--User Information-->
+    <div class="tab-pane" id="info">
+      <div class="row">
+        <div class="col-md-1 col-md-offset-1"><strong class="name">Name:</strong></div>
+        <div class="col-xs-4">
+          <p class="text-muted name" id="nameData" (change)='profileData.name=$event.target.value' *ngIf="profileData">{{profileData.name}}</p>
+        </div>
+        <div class="col-xs-2 text-left name" style="margin-left: -14%;">
+          <!--<i class="glyphicon glyphicon-edit recipesPadges editInfo"></i>-->
+          <p class="editInfo" data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span></button></p>
+        </div>
+
+      </div>
+      <hr class="hr" />
+      <div class="row">
+        <div class="col-xs-1  col-md-offset-1"><strong class="name">Email:</strong></div>
+        <div class="col-xs-4">
+          <p class="text-muted name" id="emailData" (change)='profileData.email=$event.target.value' *ngIf="profileData">{{profileData.email}}</p>
+        </div>
+        <div class="col-xs-2 text-left name" style="margin-left: -14%;">
+          <p class="editInfo" data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span></button></p>
+
+        </div>
+      </div>
+      <hr class="hr" />
+      <div class="row" id="btn_Changes">
+        <div class="col-xs-1 col-xs-offset-1">
+          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="btn_ChangePassword" (click)="cancelChangingPass()">Change Password</button>
+        </div>
+      </div>
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header ourModal">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>      </button>
+              <h4 class="modal-title" id="myModalLabel">Change Password</h4>
+            </div>
+            <div class="modal-body">
+              <form class="form-horizontal">
+                <div class="form-group">
+                  <label class="control-label col-sm-4" for="pwd">Password:</label>
+                  <div class="col-sm-8">
+                    <input type="password" class="form-control" [(ngModel)]="currentPassword" placeholder="Enter password" name="currentPassword"
+                      ng-required="'true'" />
+                    <small style="color:red;" *ngIf="wrongCurrentPassMessage">{{ wrongCurrentPassMessage }}</small>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-4" for="pwd">New Password:</label>
+                  <div class="col-sm-8">
+                    <input type="password" class="form-control" placeholder="Enter New Password" [(ngModel)]="newPassword" name="newPassword"
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-4" for="pwd">Confirm Password:</label>
+                  <div class="col-sm-8">
+                    <input type="password" class="form-control" placeholder="Confirm New Password" name="confirmNewPassword" [(ngModel)]="confirmNewPassword"
+                    />
+                    <small style="color:red;" *ngIf="wrongConfirmPassMessage">{{ wrongConfirmPassMessage }}</small>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer ourModalFooter">
+              <button type="button" class="btn" (click)="cancelChangingPass()" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-warning" (click)="changePassword($event)" data-dismiss="">Save changes</button>              </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane" id="yourRecipes" style="margin-top: 30px;">
+      <div class="col-md-3">
+        <app-filter2 [recipeType]="'myRecipes'" (sendRecipes)="onSendUser($event)"></app-filter2>
+      </div>
+      <div class="col-md-9" *ngIf="recipes">
+        <app-recipesView [recipes]="recipes" [user]="profileData" [recipesFlag]="'false'"></app-recipesView>
+      </div>
+
+    </div>
+    <div class="tab-pane" id="shoppingList">
+      <div class="row">
+        <div class="list-group  col-md-8 col-md-offset-2" *ngIf="profileData">
+          <div class="list-group-item" *ngFor="let list of profileData.shoppingList; let i = index">
+            <div [id]="i" style="display: inline-block;">
+              {{list.amount}} {{list.unitType.name}} {{list.ingredient.name}}
+            </div>
+            <span class="btn btn-danger btn-xs remove">
+              <i class="glyphicon glyphicon-trash removeItem" [attr.data-index]="i"></i>
+            </span>
+            <span class="btn btn-primary btn-xs edit">
+              <i class="glyphicon glyphicon-pencil editItem" [attr.data-index]="i"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-offset-3 col-md-3" *ngIf="profileData">
+          <div class="row">
+            <div class="col-md-2 col-md-offset-3">
+              <button class="btn btn-warning" id="btn_AddComp" attr.index="{{listLength}}">
+                <i class="glyphicon glyphicon-plus"></i> Add Component
+              </button>
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-success"  style="margin-left: 130px;" id="btn_DownPDF">Download PDF</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

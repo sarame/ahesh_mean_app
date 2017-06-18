@@ -1,12 +1,11 @@
 
 
 
-
         /* padding el header*/ 
-        .heading-section {
+             .heading-section {
             text-align: center;
-            padding: 50px 0 50px 0;
-        }   
+            padding: 40px 0 40px 0;
+        }  
      /*social*/
         .main-menu #dob ul li {
             padding: 0px;
@@ -183,3 +182,69 @@
             -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px gray !important;
             box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #f78e21 !important;
         }
+        
+        h4, .h4, h5, .h5, h6, .h6 {
+            margin-top: 10px; 
+            margin-bottom: 0px; 
+        }
+        .blog-content {
+            padding: 0px; 
+        }
+        .blog-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0,0,0,0.6);
+            color: #fff;
+            padding-left: 15px;
+        }
+
+        .hover15 figure {
+	position: relative;
+}
+.hover15 figure::before {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 2;
+	display: block;
+	content: '';
+	width: 0;
+	height: 0;
+	background: rgba(255,255,255,.2);
+	border-radius: 100%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	opacity: 0;
+}
+.hover15 figure:hover::before {
+	-webkit-animation: circle .75s;
+	animation: circle .75s;
+}
+@-webkit-keyframes circle {
+	0% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 1;
+	}
+	100% {
+		width: 200%;
+		height: 200%;
+		opacity: 0;
+	}
+}
+@keyframes circle {
+	0% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 1;
+	}
+	100% {
+		width: 200%;
+		height: 200%;
+		opacity: 0;
+	}
+}

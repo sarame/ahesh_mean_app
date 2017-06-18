@@ -1,0 +1,35 @@
+<div class="thumbnail">
+    <img src="images/gallery/{{recipe.img}}" alt="{{recipe.name}}" />
+    <img class="userPic" src="images/{{recipe.user.img}}" alt="{{recipe.user.name}}"/>
+    <span class="userName"> {{recipe.user.name}}</span>
+    <div class="caption">
+        <h3>{{recipe.name}}
+            <span class="favorit" [ngClass]="currentHeart" (click)="changeFavorit($event)" > </span>
+        </h3>
+        <h3 class="rate"><span style="color:#f78e21;" [star]="recipe.avgRate"></span></h3>
+        <h5><span class="size">{{recipe.size}} servings ( {{recipe.totalCalories}}:Cal )</span></h5>
+        <p>{{recipe.description}}</p>
+        <a class="btn btn-success" role="button">view more</a>
+    </div>
+</div>
+
+
+<div class="modal fade" id="deletedModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>      </button>
+                    <h4 class="modal-title" id="myModalLabel" *ngIf="recipe">Remove {{ recipe.name }} from favourite</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="" (click)="dislikeRecipe($event, recipe._id)">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

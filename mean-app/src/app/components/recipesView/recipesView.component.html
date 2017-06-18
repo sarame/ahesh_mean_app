@@ -1,0 +1,15 @@
+<div *ngIf="recipesFlag === 'true'">
+    <div class="row" *ngIf="recipes">
+        <div class="col-xs-6 col-md-4" *ngFor="let recipe of recipes">
+            <app-recipeContent [recipe]="recipe" [currentUser]="user" (unlikeRecipe)="unlikeRecipe($event)"></app-recipeContent>
+        </div>
+    </div>
+</div>
+<div *ngIf="recipesFlag === 'false'">
+    <div class="row" *ngIf="recipes">
+        <div class="col-xs-6 col-md-4" *ngFor="let recipe of recipes">
+            <app-userRecipeContent [recipe]="recipe" [currentUser]="user" (deletedRecipe)="DelRecipe($event)"></app-userRecipeContent>
+        </div>
+    </div>
+
+</div>

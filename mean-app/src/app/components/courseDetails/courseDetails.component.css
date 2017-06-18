@@ -1,0 +1,100 @@
+body{
+
+  overflow-y:scroll;
+
+}
+div.sections-container{
+  width:100%;
+  height: 600px;
+  min-height: 500px;
+  margin-bottom: -120px;
+  border:1px solid #f78e21;
+}
+
+div.bhoechie-tab-container{
+  height: 100%;
+  z-index: 10;
+  background-color: #ffffff;
+  padding: 0 !important;
+
+  background-clip: padding-box;
+  opacity: 0.97;
+  filter: alpha(opacity=97);
+}
+div.sections,div.sectionContent{
+  padding-right: 0;
+  padding-left: 0;
+  padding-bottom: 0;
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 100%;
+  
+   
+}
+/* Let's get this party started */
+div.sections::-webkit-scrollbar,div.sectionContent::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+/* Track */
+div.sections::-webkit-scrollbar-track,div.sectionContent::-webkit-scrollbar-track{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+div.sections::-webkit-scrollbar-thumb,div.sectionContent::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(102,102,102,0.8); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+div.sections div.list-group{
+  margin-bottom: 0;
+}
+div.sections div.list-group>a{
+    background: #e6e6e6;
+    color: #666;
+    font-size: larger;
+    font-weight: 5;
+    border-radius: 0;
+    border: 0 none;
+    line-height: 24px;
+    margin-right: 0;
+    padding: 13px 20px;
+    margin: 2px;
+}
+div.sections div.list-group>a .glyphicon,
+div.sections div.list-group>a .fa {
+  color: #A9A9A9;
+}
+div.sections div.list-group>a:first-child{
+  border-top-right-radius: 0;
+  -moz-border-top-right-radius: 0;
+}
+div.sections div.list-group>a:last-child{
+  border-bottom-right-radius: 0;
+  -moz-border-bottom-right-radius: 0;
+}
+div.sections div.list-group>a.active,
+div.sections div.list-group>a.active .glyphicon,
+div.sections div.list-group>a.active .fa{
+  background-color: #f78e21;
+  background-image: #f78e21;
+  color: #ffffff;
+}
+
+
+div.bhoechie-tab-content{
+  background-color: #ffffff;
+  padding-left: 20px;
+  padding-top: 10px;
+}
+.sectionContent .bhoechie-tab-content{
+  text-align: center;
+  padding: 5px;
+}
+div.bhoechie-tab div.bhoechie-tab-content:not(.active){
+  display: none;
+}

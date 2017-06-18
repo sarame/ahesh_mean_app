@@ -1,0 +1,48 @@
+<div class="container-fluid profile-container">
+  <div class="row">
+    <div class="col-md-2">
+      <ul class="nav nav-tabs tabs-left">
+        <li [class]="currentTab == 'favourite'? 'active' : ''" [routerLink]="['/profile', 'favourite']"><a href="#favourite" data-toggle="tab">Favourite</a></li>
+        <li [class]="currentTab == 'info'? 'active' : ''" [routerLink]="['/profile', 'info']"><a href="#info" data-toggle="tab">Info</a></li>
+        <li [class]="currentTab == 'yourRecipes'? 'active' : ''" [routerLink]="['/profile', 'yourRecipes']"><a href="#yourRecipes" data-toggle="tab">Your Recipes</a></li>
+        <li [class]="currentTab == 'shoppinglist'? 'active' : ''" [routerLink]="['/profile', 'shoppinglist']"><a href="#shoppingList" data-toggle="tab">Shopping List</a></li>
+        <li [class]="currentTab == 'badges'? 'active' : ''" [routerLink]="['/profile', 'badges']"><a href="#progress" data-toggle="tab">Progress</a></li>
+        <li [class]="currentTab == 'mycourses'? 'active' : ''" [routerLink]="['/profile', 'mycourses']"><a href="#courses" data-toggle="tab">Courses</a></li>
+      </ul>
+    </div>
+
+    <div class="col-md-8">
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div [class]="currentTab == 'favourite'? 'tab-pane active' : 'tab-pane'" id="favourite">
+          <div class="row">
+            <div class="col-md-5 col-md-offset-1">
+              <h1><small>Favorites</small></h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="list-group col-xs-offset-1 col-xs-10" *ngIf="profileData">
+              <div *ngFor="let fevRecipe of profileData.fevRecipes" class="row list-group-item recipes">
+                <div class="col-xs-2">
+                  <img src="images/gallery/{{ fevRecipe.img }}" class="img-circle" width="100" height="80" />
+                </div>
+                <div class="col-xs-5">
+                  <p class="text-muted h4"><strong style="font-family: cursive;">{{ fevRecipe.name }}</strong></p>
+                  <span [star]="fevRecipe.avgRate"></span>
+                </div>
+                <span class="badge badge-default badge-pill likePadge">
+                                            <i class="glyphicon glyphicon-heart favoritePadges like" (click)="fevRecipe_Unlike($event, fevRecipe._id)"></i>
+                                        </span>
+                <div class="col-xs-5 text-right">
+                  <button class="btn btn-info btnView">View</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<div class="clearfix "></div>
+</div>-->

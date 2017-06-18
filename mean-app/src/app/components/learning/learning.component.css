@@ -1,11 +1,10 @@
 
 
 
-
         /* padding el header*/ 
         .heading-section {
             text-align: center;
-            padding: 50px 0 50px 0;
+            padding: 40px 0 40px 0;
         }   
      /*social*/
         .main-menu #dob ul li {
@@ -121,7 +120,7 @@
         }
 
         #services {
-            background: #000 url(../../images/services/bg_services.png);
+            background: #000 url(../../images/bg_services.jpg);
             background-size: cover;
         }
 
@@ -130,10 +129,12 @@
         }
 
         .services-wrap {
-            padding: 40px 30px;
+            width: 100%;
+            height: 100%;
+            padding: 20px 10px;
             background: #fff;
             border-radius: 4px;
-            margin: 0 0 40px;
+            margin: 0 0 0px;
         }
 
         .services-wrap .pull-left {
@@ -183,3 +184,107 @@
             -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px gray !important;
             box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #f78e21 !important;
         }
+
+
+        /* pure slider*/
+        
+/**** slider ****/
+
+#slider, ul
+{
+	height: 250px;
+}
+
+#slider
+{
+	overflow: hidden;
+	position: relative;
+	width: 1000px;
+}
+
+#slider li
+{
+	float: left;
+	position: relative;
+	width: 1000px;
+	display: inline-block;
+	height: 300px;
+}
+
+.media{
+    -moz-transition:all 150ms ease-in;
+	-webkit-transition:all 150ms ease-in;
+	-o-transition:all 150ms ease-in;
+	position:relative;
+	transform:rotate(0deg);
+	-ms-transform:rotate(0deg);
+	-moz-transform:rotate(0deg);
+	-webkit-transform:rotate(0deg);
+	-o-transform:rotate(0deg);
+}
+.media:hover
+{
+	border:2px solid orange;
+    box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.25);
+	-webkit-animation:rotatey .5s ease-out;
+	-moz-animation:rotatey 0.5s ease-out;
+}
+
+#slider ul
+{
+	list-style: none;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 9000px;
+	transition: left .3s linear;
+	-moz-transition: left .3s linear;
+	-o-transition: left .3s linear;
+	-webkit-transition: left .3s linear;
+    font-family: century gothic; 
+    color: #666;
+}
+
+/*** Content ***/
+
+.slider-container
+{
+	width: 950px;
+     min-height: 180px;
+
+}
+
+.slider-container h4
+{
+ 	color: #0A7FAD;
+    text-shadow: -1px 0px 0px rgba(0, 0, 0, 0.50);
+}
+
+
+/*** target hooks ****/
+
+@-webkit-keyframes slide-animation {
+	0% {opacity:0;}
+	1% {opacity:1;}
+	20% {left:0px; opacity:1;}
+	21.5% {opacity:0.6;}
+	23% {left:-1000px; opacity:1;}
+	59% {left:-1000px; opacity:1;}
+	60.5% {opacity:0.6;}
+	61% {left:-2000px; opacity:1;}
+	98% {left:-2000px; opacity:1;}
+	100% {left:0px; opacity:0;}
+}
+
+#slider ul
+{
+	-webkit-animation: slide-animation 20s infinite;
+}
+
+/* use to paused the content on mouse over */
+
+#slider ul:hover
+{
+	-moz-animation-play-state: paused;
+	-webkit-animation-play-state: paused;
+}

@@ -10,14 +10,26 @@ import { HomeService } from '../../services/homeServices/home.service';
 export class LearningComponent implements OnInit {
   items: any = [{}, {}, {}];
   ite: any = [{}, {}, {}]
-  constructor(private homeService: HomeService) { }
+  constructor(private homeService: HomeService) {
+
+
+  }
 
   ngOnInit() {
+
     // Retrieve posts from the API
     this.homeService.getAllCourses().subscribe(items => {
       this.ite = items;
-     // console.log(items);
+     // console.log(this.ite);
     });
+
+    // if (!localStorage.justOnce) {
+    //   localStorage.setItem("justOnce", "true");
+    //   window.location.reload();
+    // } else {
+    //   localStorage.removeItem("justOnce");
+    // }
+
   }
 
 }

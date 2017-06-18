@@ -1,0 +1,24 @@
+<div id="heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-content">
+                    <h2>Recipes</h2>
+                    <span>Home > <a [routerLink]="['/recipes']"> Recipes</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container recipesContainer" style="margin-top: 40px;">
+    <div class="row">
+        <div class="col-md-3">
+            <app-filter (sendRecipes)='onSend($event)'></app-filter>
+        </div>
+        <div class="col-md-9" *ngIf="filterRecipes">
+            <app-recipesView [recipes]="filterRecipes" [recipesFlag]="'true'" [user]="user"></app-recipesView>
+
+        </div>
+    </div>
+
+</div>

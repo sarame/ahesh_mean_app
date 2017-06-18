@@ -4,10 +4,10 @@
 
 
         /* padding el header*/ 
-        .heading-section {
+                .heading-section {
             text-align: center;
-            padding: 50px 0 50px 0;
-        }   
+            padding: 40px 0 40px 0;
+        }  
      /*social*/
         .main-menu #dob ul li {
             padding: 0px;

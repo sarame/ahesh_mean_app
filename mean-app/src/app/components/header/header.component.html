@@ -1,91 +1,106 @@
-     <header>
-        <div id="top-header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="home-account">
-                            <a [routerLink]="['/index']">Home</a>
-                            <a [routerLink]="['/posts']">sign in</a>
-                            <a href="login.html">login</a>
-                        </div>
+<header>
+    <div id="top-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="home-account" *ngIf="flag">
+                        <a [routerLink]="['/index']">Home</a>
+                        <a [routerLink]="['/posts']">sign in</a>
+                        <a href="login.html">login</a>
                     </div>
-                    <div class="col-md-6">
-                        <div class="social">
-                            <ul class="social-share">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                <li><a href="#"><i class="fa fa-skype"></i></a></li>
-                            </ul>
-                        </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="social">
+                        <ul class="social-share">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                            <li><a href="#"><i class="fa fa-skype"></i></a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="main-header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-2">
-                        <div class="logo">
-                            <a href="#"><img src="images/logo.png" title="Grill Template" alt="Grill Website Template"></a>
-                        </div>
+    </div>
+    <div id="main-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="logo">
+                        <a href="#"><img src="images/stock-vector-food-logo.png" style="width: 120px;height: 66px;" title="Grill Template" alt="Grill Website Template"></a>
                     </div>
-                    <div class="col-md-5">
-                        <div class="main-menu">
-                            <ul>
-                                <li><a [routerLink]="['/index']">Home</a></li>
-                                <li><a href="allRecipes.html">Recipes</a></li>
-                                <li><a href="courses.html">Courses</a></li>
-                                <li><a href="recipe.html">Cook what today</a></li>
-                            </ul>
-                        </div>
+                </div>
+                <div class="col-md-5 col-sm-3">
+                    <div class="main-menu">
+                        <ul>
+                            <li><a [routerLink]="['/index']">Home</a></li>
+                            <li><a [routerLink]="['/recipes/filter/allRecipes']">Recipes</a></li>
+                            <li><a [routerLink]="['/courses']">Courses</a></li>
+                            <li><a href="recipe.html">Cook what today</a></li>
+                        </ul>
                     </div>
-                    <div class="col-md-3">
+                </div>
+                <div class="col-md-3">
 
-                        <div class="search-box">
-                            <form name="search_form" method="get" class="search_form">
-                                <input id="search" class="form-control" type="text" />
-                                <input type="submit" id="search-button" />
-                            </form>
-                        </div>
+                    <div class="search-box">
+                        <input id="search" (keyup)="performSearch(searchTerm)" placeholder="search" #searchTerm class="form-control" type="text"
+                        />
+                        <input type="submit" (click)="performSearch(searchTerm)" id="search-button" class="dropdown-toggle" data-toggle="dropdown"
+                            role="button" aria-haspopup="true" aria-expanded="false" />
+                        <ul class="dropdown-menu dropdown-menu1" id="{{search}}" *ngIf="items" style="margin: 0px 0 0;">
+                            <li *ngFor="let g of items"><a href="">{{g.name}}</a></li>
+                        </ul>
                     </div>
-                    <div class="col-md-1">
+                </div>
+                <div class="col-md-1">
 
-                        <div class="logo">
+                    <div class="logo" *ngIf="flag">
 
-                            <a href="profile.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <img src="images/team_1.jpg" style="margin-left: 30px;" title="Grill Template" width="50px" height="50" alt="Grill Website Template">
+                        <a [routerLink]="['/privateProfile']" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <img [src]="oldImg" style="margin-left: 30px;" title="Grill Template" width="50px" height="50" alt="Grill Website Template">
                             </a>
-                            <ul class="dropdown-menu" style="margin: 16px 0 0;">
-                                <li><a href="profile.html"><i class="fa fa-heart" aria-hidden="true"></i>&nbsp;Favorite</a></li>
-                                <li><a href="profile.html"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Information</a></li>
-                                <li><a href="profile.html"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;Your recipes</a></li>
-                                <li><a href="profile.html"><i class="fa fa-shopping-cart"></i>&nbsp;Shoping list</a></li>
-                                <li><a href="profile.html"><i class="fa fa-gift" aria-hidden="true"></i>&nbsp;Progress & Badges</a></li>
-                                <li><a href="profile.html"><i class="fa fa-book" aria-hidden="true"></i>&nbsp;Courses</a></li>
-                            </ul>
-                        </div>
+                        <ul class="dropdown-menu" style="margin: 16px 0 0;">
+                            <li><a [routerLink]="['/privateProfile']"><i class="fa fa-heart" aria-hidden="true"></i>&nbsp;Favorite</a></li>
+                            <li><a [routerLink]="['/privateProfile']"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Information</a></li>
+                            <li><a [routerLink]="['/privateProfile']"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;Your recipes</a></li>
+                            <li><a [routerLink]="['/privateProfile']"><i class="fa fa-shopping-cart"></i>&nbsp;Shoping list</a></li>
+                            <li><a [routerLink]="['/privateProfile']"><i class="fa fa-gift" aria-hidden="true"></i>&nbsp;Progress & Badges</a></li>
+                            <li><a [routerLink]="['/privateProfile']"><i class="fa fa-book" aria-hidden="true"></i>&nbsp;Courses</a></li>
+                        </ul>
                     </div>
-                    <div class="col-md-1">
-                        <div class="main-menu">
-                            <ul>
-                                <li id="dob" class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                </div>
+                <div class="col-md-1">
+                    <div class="logo" *ngIf="flag">
+
+                        <a [routerLink]="['/privateProfile']" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="glyphicon glyphicon-list-alt" style="font-size: 25px; margin-top: 25%;"></i>
+                            </a>
+                        <ul class="dropdown-menu" style="margin: 16px 0 0;" *ngIf="list">
+                            <li *ngFor="let l of list"><a href="">{{l.ingredient.name}}</a></li>
+
+                            <li role="separator " class="divider "></li>
+                            <li style="text-align: center;"><a [routerLink]="['/privateProfile']" style="color:#f78e21;cursor: pointer;text-decoration: underline;"> <strong>See more</strong></a></li>
+
+                        </ul>
+                        <!--<ul>
+                            <li id="dob" class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                         <i class="fa fa-shopping-cart" style="font-size: 25px;"></i>
                                     </a>
-                                    <ul class="dropdown-menu" style="text-align: left;padding: 3p;">
-                                        <li><a href="#">tomatom </a></li>
-                                        <li><a href="#">orange</a></li>
-                                        <li role="separator " class="divider "></li>
-                                        <li style="text-align: center;"><a href="#" style="color:#f78e21;cursor: pointer;text-decoration: underline;"> <strong>See more</strong></a></li>
-                                    </ul>
-                                </li>
+                                <ul class="dropdown-menu" *ngIf="list" style="text-align: left;padding: 3p;">
 
-                            </ul>
-                        </div>
+                                    <li *ngFor="let l of list"><a href="">{{l.ingredient.name}}</a></li>
+
+                                    <li role="separator " class="divider "></li>
+                                    <li style="text-align: center;"><a href="#" style="color:#f78e21;cursor: pointer;text-decoration: underline;"> <strong>See more</strong></a></li>
+                                </ul>
+                            </li>
+
+                        </ul>-->
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
+</header>

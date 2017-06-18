@@ -1,0 +1,38 @@
+<div class="span3 ourfilter">
+    <div class="sidebar-nav">
+        <div class="base">
+            <input type="text" placeholder="Search..." class="form-control" [(ngModel)]="keyword" (keyup)="findRecipe()" />
+            <div class="filterHeader">
+                <h3>Tags</h3>
+            </div>
+            <ul class="nav nav-list tags" *ngIf="tags" >
+                <li *ngFor="let tag of tags" >
+                    <div class="checkbox ourCheckbox">
+                        <label><input class="filterInput" type="checkbox" [ngModel]="checkFilters(tag._id)" (change)="chooseTag($event)" value="{{tag._id}}"/>{{tag.name}}</label>
+                    </div>
+                </li>
+            </ul>
+            <div class="filterHeader">
+                <h3>Calories</h3>
+            </div>
+
+            <div class="range">
+                <input type="range" name="range" min="100" max="1000" value="1000" [(ngModel)]="calorieFilter" (change)="chooseCalories()"
+                    onchange="rangeCal.value=value">
+                <output id="rangeCal">1000</output>
+            </div>
+
+            <br/>
+            <div class="filterHeader">
+                <h3>Ranking</h3>
+            </div>
+
+            <div class="range">
+                <input type="range" name="range" min="0" max="5" value="0" [(ngModel)]="rankFilter" (change)="chooseRanking()" onchange="rangeRank.value=value">
+                <output id="rangeRank">0</output>
+            </div>
+
+
+        </div>
+    </div>
+</div>

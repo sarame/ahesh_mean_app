@@ -1,0 +1,19 @@
+<!--Course container-->
+<div class="thumbnail ourCourse" *ngIf="course">
+    <div class="row">
+        <div class="col-xs-6">
+            <img class="img-responsive img-rounded thumbnail courseImage " src="images/{{course.img}}" alt="">
+        </div>
+        <div class="col-xs-6">
+            <h1 class="courseName">{{course.name}}</h1>
+            <h3>{{course.description}}</h3>
+            <hr/>
+            <h4 class="sections">Sections</h4>
+            <ul class="sectionList">
+                <li *ngFor="let section of course.sections">{{section.title}}</li>
+            </ul>
+            <hr/>
+            <p class="viewMore"><a class="btn btn-primary btn-lg" (click)="changeRout()">view details</a></p>
+        </div>
+    </div>
+</div>
