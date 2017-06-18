@@ -59,13 +59,13 @@ function GetById(req, res) {
 }
 
 function Delete(req, res) {
-    user.findByIdAndRemove(req.params.id).then(_result => res.json("data is deleted: " + _result))
+    user.findByIdAndRemove(req.params.id).then(_result => res.json( _result))
         .catch(_err => res.status(500).send())
 }
 
 function Update(req, res) {
     console.log("params  " + req.params);
-    user.findByIdAndUpdate(req.params.id, req.body).then(_result => res.json("data is updated: " + _result))
+    user.findByIdAndUpdate(req.params.id, req.body).then(_result => res.json(_result))
         .catch(_err => res.status(500).send())
 }
 //check the user is exist of not 
@@ -99,7 +99,7 @@ function GetByEmail(req, res) {
             select: '-_id',
         })
         .populate('badges.badgeid')
-        .then(_result => res.json("data is : " + _result))
+        .then(_result => res.json(_result))
         .catch(_err => res.status(500).send())
 }
 module.exports = {

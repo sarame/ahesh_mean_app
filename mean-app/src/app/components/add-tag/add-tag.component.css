@@ -1,0 +1,20 @@
+#ingBtn{
+  width: 185px;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  background-color: #f78e21; 
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  text-transform: capitalize;
+  border: 0;
+  outline: none;
+  margin-top: 80px;
+  margin-left: 630px; 
+}
+
+#text{
+  width: 50%;
+}

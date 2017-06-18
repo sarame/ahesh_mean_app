@@ -1,0 +1,161 @@
+<div id="heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-content">
+                    <h2>Recipe</h2>
+                    <span>Home / <a href="add_recipe.html">Add Recipe</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="latest-blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-section">
+                    <h2>Want To Share Your Recipes Here? Then, Add It </h2>
+                    <img src="images/under-heading.png" alt="" />
+                </div>
+            </div>
+        </div>
+
+
+        <!--<input type='file' (change)="readUrl($event)">
+<img [src]="url">-->
+
+
+        <div class="row">
+               <div class="col-md-6 col-md-offset-0">
+                <div id="profile-container">
+                    <img id="profileImage" [src]="src" [hidden]="!src" />
+                    <label class="btn btn-warning basma-btn">Upload Recipe Picture
+                        <input id="imageUpload" placeholder="Photo" name="profile_photo" type="file"
+                         imageUpload (imageSelected)="selected($event)"
+                            [resizeOptions]="resizeOptions" required="" capture style="display: none;">
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-md-offset-1 border">
+                <form [formGroup]="recipeForm" (ngSubmit)="submitFormRecipe()">
+                    <div class="form-group">
+                        <label class="labelSide">Name: </label>                        
+                        <input type="text" class="form-control" name="name" formControlName="recipeName" placeholder="Enter Recipe Name">
+                    </div>
+                    <div class="form-group">
+                        <label class="labelSide">Description: </label>
+                        <input type="text" class="form-control" name="descr" formControlName="recipedescription" placeholder="Enter Recipe Description" />    
+                    </div>
+                    <div class="form-group">
+                        <label class="labelSide">Size: </label>
+                        <input class="form-control spinner" formControlName="recipeSize" type="number" min="1" max="10" step="1" value="1" />
+                        <label class="labelSide">People</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="labelSide">Time: </label>
+                        <input class="form-control spinner" formControlName="recipeHrs" type="number" min="0" max="1" step="1" value="0" />
+                        <label class="labelSide">hr</label>
+                        <input class="form-control spinner" formControlName="recipeMins" type="number" min="0" max="59" step="1" value="0" />
+                        <label class="labelSide">min</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="labelSide">Video: </label>                        
+                        <input class="form-control" formControlName="recipeVideo" type="text" placeholder="Add Tutorial Video URL" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!--adding new compontnts -->
+        <br/>
+        <a class="btn btn-success btn-lg" routerLink="/add-ingredient">Add New Ingredient</a>
+        <br/><br/>
+        <div class="row recipe-border">
+            <div class="col-md-12">
+                
+                    <div class="col-md-6 ">
+                        <form [formGroup]="ingredientForm" (ngSubmit)="ingredientFormSubmit()">
+                        <h5 class="step-title">Add Ingredients</h5>
+                        <div class="row">
+                            <div class="form-group col-md-3 pull-left">
+                                <label class="sr-only">quantity</label>
+                                <input *ngIf="flag2" type="number"
+                                  class="form-control" 
+                                min="0" placeholder="quantity" formControlName="quantity">
+                            </div>
+                            <div class="form-group col-md-3 pull-left">
+                                <label class="sr-only">unit type</label>
+                            <ng-select *ngIf="flag3" 
+                            [ngStyle]="{'display':'inline-block', 'width': '100%' , 'height':'30px'}"
+                            [allowClear]="false" [items]="selectedUnitTypes" (data)="refreshValue($event)"
+                            [active]="[selectedUnitTypes[0]]" (selected)="selectedUnit($event)" 
+                            (typed)="typed($event)">
+                            </ng-select>
+                            </div>
+                            <div class="form-group col-md-4 pull-left">
+                                <label class="sr-only">ingerdient</label>
+                                <!--<input type="text" class="form-control input-sm" placeholder="ingredient">-->
+                                <ng-select *ngIf="flag"
+                                 [ngStyle]="{'display':'inline-block', 'width': '100%' , 'height':'30px'}"
+                                 [allowClear]="false" [items]="selectedIngredients" (data)="refreshValue($event)"
+                                 [active]="[selectedIngredients[0]]" (selected)="selectedIng($event)" (typed)="typed($event)">
+                                </ng-select>
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-info btn-sm"
+                                type="submit"> <i class="fa fa-plus" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                        </form>
+                        <div class=" row all-ingerdients">
+                            <ol>
+                                <li *ngFor="let ing of localRecipeIngrdientsAllObjects; let i = index">
+                                    <p>{{ing.quantity + ' ' + ing.selectedUnit+' ' + ing.ingredient.name}}
+                                        <span><a href="#" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> edit</a></span>
+                                        <span (click)="removeIngredient(i)"><a  class="btn btn-danger btn-xs"><i class="fa fa-times" aria-hidden="true"></i> delete</a></span></p>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="col-md-6 my-steps">
+                        <h5 class="step-title">Add Procedures</h5>
+                        <div class="row">
+                            <form [formGroup]="stepForm" (ngSubmit)="stepFormSubmit()">
+                            <div class="form-group offset-col-md-1 col-md-8 pull-left">
+                                <label class="sr-only">step</label>
+                                <input type="text" class="form-control input-sm" placeholder="write step" 
+                                formControlName="step">
+                            </div>
+                            <div class="col-md-3">
+                                <button type="submit" class="btn btn-success btn-sm">Add step</button>
+                            </div>
+                            </form>
+                        </div>
+                        <div class="row">
+                            <ol *ngIf="localStepArray.length > 0">
+                                <li  *ngFor="let step of localStepArray; let i = index">
+                                    <p>{{step.stepNo +" "+step.text}}
+                                        <span><a href="#" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>edit</a></span>
+                                        <span><a href="#" class="btn btn-danger btn-xs"><i class="fa fa-times" aria-hidden="true"></i>delete</a></span></p>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <br><br><br>
+                        <button type="button" class="btn btn-primary pull-right" (click)="AddSection()">Add Section</button>
+                        &nbsp;
+                        <button type="button" class="btn btn-success pull-right margin" (click)="AddRecipe()">Add Recipe</button>                    
+                    </div>    
+            </div>
+        </div>
+        <!--view steps -->
+        
+        <!--end of steps -->
+
+           
+    </div>
+</div>

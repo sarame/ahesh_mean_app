@@ -1,34 +1,28 @@
-var ingredientModel = require("./../collections/ingradient");
+var ingredient = require("../collections/ingredient");
 
-function GetAll(req, res) {
-    return ingredientModel.find({})
-        .then(result => res.json(result));
+function GetAll(req,res){
+   // console.log("result:  " + res.json)
+    ingredient.find({}).then(_result=>res.json(_result))
+    .catch(_err=>res.status(500).send())
+}
+function Add(req,res){
+    var newingredient= new ingredient(req.body);
+    newingredient.save().then(_result => res.json(_result))
+        .catch(_err => res.status(500).send())
+}
+function GetById(req,res){
+    ingredient.findById(req.params.id).then(_result=>res.json(_result))
+    .catch(_err=>res.status(500).send())
 }
 
-function GetById(req, res) {
-    return ingredientModel.findById(req.params['id'])
-        .then(result => res.json(result));
+function Delete(req,res){
+    ingredient.findByIdAndRemove(req.params.id).then(_result=>res.json(_result))
+    .catch(_err=>res.status(500).send())
 }
 
-function AddIngredient(req, res) {
-    var ingredient = new ingredientModel(req.body);
-    ingredient.save().then(result => res.json(result));
-}
-
-function DelIngredient(req, res) {
-    return ingredientModel.findByIdAndRemove(req.params["id"])
-        .then(result => res.json(result));
-}
-
-function UpIngredient(req, res) {
-    return ingredientModel.findByIdAndUpdate(req.params["id"], req.body)
-        .then(result => res.json(result));
-}
-
-module.exports = {
-    GetAll: GetAll,
-    GetById: GetById,
-    AddIngredient: AddIngredient,
-    DelIngredient: DelIngredient,
-    UpIngredient: UpIngredient
+module.exports={
+    Add:Add,
+    GetAll:GetAll,
+    GetById:GetById,
+    Delete:Delete
 }

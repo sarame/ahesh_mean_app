@@ -1,0 +1,33 @@
+.form-control.text{
+    display: inline-block;
+    width: 350px;
+    margin-left: 15px;
+}
+
+.col-md-8.col-md-offset-2{
+    border-radius: 5px;
+    border: 2px solid #f78e21;
+    padding: 20px;
+    background-color: #2e2e2e;
+}
+
+.alert{
+    padding: 6px;
+}
+
+.margin{
+    margin-top: 10px;
+}
+
+.padding{
+    padding-right: 30px;     
+}
+
+#infoLabel{
+    color: #f78e21;
+    margin-bottom: 30px;
+}
+
+label{
+    color: #f78e21;;
+}

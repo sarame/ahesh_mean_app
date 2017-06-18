@@ -1,0 +1,20 @@
+<div id="latest-blog">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="heading-section">
+          <h2>Want To Add Ingredients Here? Then, Add It </h2>
+          <img src="images/under-heading.png" alt="" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <form [formGroup]="tagForm" (ngSubmit)="submitForm()">
+          <input id="text" class="form-control" formControlName="tag" type="text" />
+          <input id="ingBtn" type="submit" value="Add Tag" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

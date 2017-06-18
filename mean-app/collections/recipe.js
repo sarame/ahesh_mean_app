@@ -15,13 +15,26 @@ var recipeSchema = new Schema({
     date: { type: String },
     description: { type: String, require: true },
     size: { type: Number, default: 1 },
-
+    video : {type:String },//added now
     user: { type: Schema.Types.ObjectId, ref: "user" },
-    ingerdients: [{ type: Schema.Types.ObjectId, ref: "ingredient" }],
     reviews: [{ type: Schema.Types.ObjectId, ref: "review" }],
-    steps : [{step:{
-        type: String
-    }}], 
+    sections :[{
+            sectionNumber: {type : Number},
+            ingerdients:[{ 
+                    ingredient: { type: Schema.Types.ObjectId, ref: "ingredient"},
+                    unitType: { type:Schema.Types.ObjectId, ref: "unitType" },
+                    qunatity: { type:Number }
+                }],
+            steps:[
+                {
+                    stepNo: {type: Number},
+                    text: {type:String},
+                    ingredientLinks:[{type: Schema.Types.ObjectId, ref: "ingredient" }],
+                    sectionsLinks: [{type: Schema.Types.ObjectId, ref: "section" }]
+                }
+            ]
+        }
+    ], 
     tags:[{type: Schema.Types.ObjectId, ref: "tag"}]
 }, { strict: true });
 module.exports = mongoose.model("recipe", recipeSchema);

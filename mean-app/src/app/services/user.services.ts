@@ -10,23 +10,23 @@ export class UserService {
     // user: User ;
     API: string = '';
     users: any[] ;
-    currentUser: any = {}
+    currentUser: any = {} ;
+    theuser: Iuser;
   constructor(private http: Http ,
    private localStorageService: LocalStorageService){
    }
 
-  // Get all posts from the API
-  
+ 
     signup(user:any) {
     let bodyString = JSON.stringify(user); // Stringify payload
     let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
-  this.localStorageService.add('currentUser',user);  
-        return this.http.post('/api/user', user, options) // ...using post request
+ //   this.localStorageService.add('currentUser',user);  
+        return this.http.post('/api/user', bodyString, options) // ...using post request
         .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
         .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any      
   }
-  // register by the website 
+ 
 
   register(usser:any) {
       let user = {
@@ -36,32 +36,23 @@ export class UserService {
       email: usser.email
     }
     
-  } 
-  isExist(user:any) : any {
-      return this.http.get(`/api/user/g/`+ user.email)
-      .map(res => res.json())
-      .subscribe(user => {
-      this.currentUser = user; 
-      console.log("gowa el service" +this.currentUser);
-      console.log("da el currentuser gowa el local " + this.localStorageService.get('currentUser'));
-      if(this.localStorageService.get('currentUser')===''){
-          this.localStorageService.add('currentUser' ,this.currentUser.name)
-      }
-    });
   }
 
-  login(user:any): any{
-        return this.http.get(`/api/user/g/`+ user.email)
+  isExist(user:any) :Observable<Iuser> {
+      return this.http.get(`/api/user/g/`+ user.email)
       .map(res => res.json())
-      .subscribe(user => {
-      this.currentUser = user; 
-      console.log("gowa el service" +this.currentUser);
-      console.log("da el currentuser gowa el local " + this.localStorageService.get('currentUser'));
-      if(this.localStorageService.get('currentUser')===''){
-          this.localStorageService.add('currentUser' ,this.currentUser.name)
-      }
-    });
+      .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any   
+      
+    
   }
+
+  login(user:any){
+      console.log("the user =>  " +  user.password); 
+      this.isExist(user).subscribe(res => {
+          console.log("inside is exist user " , res ) ;
+      });
+  }
+
       getAllUser(){
           return this.http.get(`/api/user`)
           .map(res => res.json())
@@ -73,5 +64,14 @@ export class UserService {
 
       }
   
+  }
+
+  export interface Iuser{
+      name: string,
+      email: string,
+      password:string,
+      bio,string ;
+      img:string,
+      
   }
 

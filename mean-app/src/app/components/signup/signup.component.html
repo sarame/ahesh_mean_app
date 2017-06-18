@@ -10,8 +10,6 @@
             </div>
         </div>
     </div>
-
-
     <div id="product-post">
         <div class="container">
             <div class="row">
@@ -39,38 +37,60 @@
                                                 <div class=" form-group sign-up">
                                                     <label class="label col-md-4 control-label"> Image Url</label>
                                                     <div class="subject col-md-8">
-                                                        <input type="text" name="img" id="username" placeholder="Username" formControlName="img" />
+                                                        <input type="text" name="img" id="username" placeholder="img url " formControlName="img"
+                                                        [ngClass]="{'has-error1':!signupForm.controls['img'].valid}" />
+                                                         <div *ngIf="signupForm.controls['img'].hasError('required') 
+                                                         && signupForm.controls['img'].touched" class="alert alert-danger">You must include a image url.</div>
+
                                                     </div>
                                                 </div>
                                                 <div class="form-group sign-up">
                                                     <label class="label col-md-4 control-label"> Name</label>
-                                                    <div class="name col-md-8">
-                                                        <input type="text" name="name" id="name" placeholder="Name" formControlName="name"/>
+                                                    <div class=" col-md-8">
+                                                        <input type="text" name="name" id="name" placeholder="Name" formControlName="name"
+                                                         />
+                                                        <div *ngIf="signupForm.controls['name'].hasError('required') 
+                                                        && signupForm.controls['name'].touched" 
+                                                        class="alert alert-danger">You must include a image url.</div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group sign-up">
                                                     <label class="label col-md-4 control-label"> Email</label>
                                                     <div class="email col-md-8">
-                                                        <input type="email" name="email" id="email" placeholder="Email" formControlName="email" />
+                                                        <input type="email"  (keyup)="isExist()" name="email" id="email"  placeholder="Email" formControlName="email" 
+                                                        [ngClass]="{'has-error':!signupForm.controls['email'].valid}"/>
+                                                        <div *ngIf="signupForm.controls['email'].hasError('required') && signupForm.controls['email'].touched "  
+                                                        class="alert alert-danger">You must include an email.</div>
+                                                        <div *ngIf="myuser !==null "  
+                                                        class="alert alert-warning">This emial is Already registerd.
+                                                        <a href="" class="btn btn-deafult btn-warning" routerLink="../login">Login</a></div>
                                                     </div>
                                                 </div>
 
                                                 <div class=" form-group sign-up">
                                                     <label class="label col-md-4 control-label"> Password</label>
                                                     <div class="subject col-md-8">
-                                                        <input type="Password" name="password" id="password" placeholder="Password" formControlName="password"/>
+                                                        <input type="Password" name="password" id="password" placeholder="Password" formControlName="password"
+                                                        [ngClass]="{'has-error':!signupForm.controls['password'].valid}"/>
+                                                        <div *ngIf="signupForm.controls['password'].hasError('required') && signupForm.controls['password'].touched" 
+                                                        class="alert alert-danger" >You must include a password.</div>
                                                     </div>
                                                 </div>
                                             </div>
+                                             
+                                        
+                                    
                                             <div class="inline-block">
                                                 <div class="send text-center">
-                                                    <button type="submit" >Sign up</button>
+                        
+                                                    <button type="submit"  >Sign up</button>
+
+                        
                                                 </div>
                                             </div>
                                         </form>
                                     </div>
-                                    <p>Form value: {{ signupForm.value | json }}</p>
-                                    <p>Form status: {{ signupForm.status | json }}</p>
+                                
                                 </div>
 
                             </div>

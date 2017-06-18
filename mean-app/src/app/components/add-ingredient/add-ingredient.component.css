@@ -1,0 +1,102 @@
+.checkbox-inline > input{
+  width: 20px;
+}
+
+.checkbox-inline + .checkbox-inline{
+  margin-left: 0px;
+}
+
+.checkbox-inline{
+  width: 150px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.labelPart1{
+  display: block;
+  margin: 6px 0px 0px 180px;  
+  height: 41px;  
+}
+
+.labelPart3{
+  display: block;
+  margin: 6px 0px 0px 90px;
+  height: 41px; 
+}
+
+.labelPart2{
+  margin-left: 90px;    
+  display: block;
+  height: 41px;
+}
+
+.labelPart{
+  margin-left: 180px;  
+  display: block;
+  height: 41px;
+}
+
+.form-control{
+  display: inline-block;
+  margin: 0px 30px 10px 0px;
+}
+
+.form-control.name{
+    width: 300px;
+    margin-left: 6px;    
+}
+
+.form-control.spinner{
+    width:100px;
+    margin-bottom: 10px;
+    margin-left: 80px;
+}
+
+.form-control.cq{
+    width:100px;
+    margin-bottom: 10px;
+    margin-left: 1px;
+}
+
+.form-control.spinner2{
+    width:100px;
+    margin-bottom: 10px;
+}
+
+#infoLabel2{
+  color: #f78e21;
+  margin-bottom: 30px;
+  margin-top: 50px;  
+}
+
+#infoLabel3{
+  color: #f78e21;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+#ingBtn{
+  width: 185px;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  background-color: #f78e21; 
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  text-transform: capitalize;
+  border: 0;
+  outline: none;
+  margin-top: 80px;
+  margin-left: 630px; 
+}
+
+.lab{
+  margin-right: 20px;
+}
+
+.lab3{
+  margin-right: 52px;
+}
